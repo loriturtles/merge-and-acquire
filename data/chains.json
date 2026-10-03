@@ -1,0 +1,460 @@
+{
+  "chains": [
+    {
+      "id": "study",
+      "chapter": "Uni",
+      "name": "Study",
+      "generator": "Backpack",
+      "tiers": [
+        {
+          "tier": 1,
+          "name": "Highlighter",
+          "file": "assets/items/study-1-highlighter.svg"
+        },
+        {
+          "tier": 2,
+          "name": "Lecture notes",
+          "file": "assets/items/study-2-lecture-notes.svg"
+        },
+        {
+          "tier": 3,
+          "name": "Flashcards",
+          "file": "assets/items/study-3-flashcards.svg"
+        },
+        {
+          "tier": 4,
+          "name": "Essay",
+          "file": "assets/items/study-4-essay.svg"
+        },
+        {
+          "tier": 5,
+          "name": "A+ exam",
+          "file": "assets/items/study-5-a-exam.svg"
+        },
+        {
+          "tier": 6,
+          "name": "Degree",
+          "file": "assets/items/study-6-degree.svg"
+        }
+      ]
+    },
+    {
+      "id": "food",
+      "chapter": "Uni",
+      "name": "Share-house food",
+      "generator": "Microwave",
+      "tiers": [
+        {
+          "tier": 1,
+          "name": "Instant noodles",
+          "file": "assets/items/food-1-instant-noodles.svg"
+        },
+        {
+          "tier": 2,
+          "name": "Toastie",
+          "file": "assets/items/food-2-toastie.svg"
+        },
+        {
+          "tier": 3,
+          "name": "Pizza slice",
+          "file": "assets/items/food-3-pizza-slice.svg"
+        },
+        {
+          "tier": 4,
+          "name": "Whole pizza",
+          "file": "assets/items/food-4-whole-pizza.svg"
+        },
+        {
+          "tier": 5,
+          "name": "Hackathon pizzas",
+          "file": "assets/items/food-5-hackathon-pizzas.svg"
+        },
+        {
+          "tier": 6,
+          "name": "Graduation cake",
+          "file": "assets/items/food-6-graduation-cake.svg"
+        }
+      ]
+    },
+    {
+      "id": "code",
+      "chapter": "First job",
+      "name": "Code",
+      "generator": "Laptop",
+      "tiers": [
+        {
+          "tier": 1,
+          "name": "Bug",
+          "file": "assets/items/code-1-bug.svg"
+        },
+        {
+          "tier": 2,
+          "name": "Patch",
+          "file": "assets/items/code-2-patch.svg"
+        },
+        {
+          "tier": 3,
+          "name": "Pull request",
+          "file": "assets/items/code-3-pull-request.svg"
+        },
+        {
+          "tier": 4,
+          "name": "Feature",
+          "file": "assets/items/code-4-feature.svg"
+        },
+        {
+          "tier": 5,
+          "name": "App release",
+          "file": "assets/items/code-5-app-release.svg"
+        },
+        {
+          "tier": 6,
+          "name": "Product launch",
+          "file": "assets/items/code-6-product-launch.svg"
+        }
+      ]
+    },
+    {
+      "id": "swag",
+      "chapter": "First job",
+      "name": "Swag",
+      "generator": "Merch box",
+      "tiers": [
+        {
+          "tier": 1,
+          "name": "Laptop sticker",
+          "file": "assets/items/swag-1-laptop-sticker.svg"
+        },
+        {
+          "tier": 2,
+          "name": "Lanyard",
+          "file": "assets/items/swag-2-lanyard.svg"
+        },
+        {
+          "tier": 3,
+          "name": "Tote bag",
+          "file": "assets/items/swag-3-tote-bag.svg"
+        },
+        {
+          "tier": 4,
+          "name": "Launch T-shirt",
+          "file": "assets/items/swag-4-launch-t-shirt.svg"
+        },
+        {
+          "tier": 5,
+          "name": "Hoodie",
+          "file": "assets/items/swag-5-hoodie.svg"
+        },
+        {
+          "tier": 6,
+          "name": "The fleece vest",
+          "file": "assets/items/swag-6-the-fleece-vest.svg"
+        }
+      ]
+    },
+    {
+      "id": "inbox",
+      "chapter": "Junior",
+      "name": "Inbox",
+      "generator": "In-tray",
+      "tiers": [
+        {
+          "tier": 1,
+          "name": "Email",
+          "file": "assets/items/inbox-1-email.svg"
+        },
+        {
+          "tier": 2,
+          "name": "Thread",
+          "file": "assets/items/inbox-2-thread.svg"
+        },
+        {
+          "tier": 3,
+          "name": "Reply-all",
+          "file": "assets/items/inbox-3-reply-all.svg"
+        },
+        {
+          "tier": 4,
+          "name": "Meeting",
+          "file": "assets/items/inbox-4-meeting.svg"
+        },
+        {
+          "tier": 5,
+          "name": "Offsite",
+          "file": "assets/items/inbox-5-offsite.svg"
+        },
+        {
+          "tier": 6,
+          "name": "Restructure",
+          "file": "assets/items/inbox-6-restructure.svg"
+        }
+      ]
+    },
+    {
+      "id": "coffee",
+      "chapter": "Junior",
+      "name": "Coffee",
+      "generator": "Coffee machine",
+      "tiers": [
+        {
+          "tier": 1,
+          "name": "Coffee bean",
+          "file": "assets/items/coffee-1-coffee-bean.svg"
+        },
+        {
+          "tier": 2,
+          "name": "Espresso",
+          "file": "assets/items/coffee-2-espresso.svg"
+        },
+        {
+          "tier": 3,
+          "name": "Flat white",
+          "file": "assets/items/coffee-3-flat-white.svg"
+        },
+        {
+          "tier": 4,
+          "name": "Oat latte",
+          "file": "assets/items/coffee-4-oat-latte.svg"
+        },
+        {
+          "tier": 5,
+          "name": "Coffee run",
+          "file": "assets/items/coffee-5-coffee-run.svg"
+        },
+        {
+          "tier": 6,
+          "name": "Coffee cart",
+          "file": "assets/items/coffee-6-coffee-cart.svg"
+        }
+      ]
+    },
+    {
+      "id": "strategy",
+      "chapter": "Lead",
+      "name": "Strategy",
+      "generator": "Printer",
+      "tiers": [
+        {
+          "tier": 1,
+          "name": "Sticky note",
+          "file": "assets/items/strategy-1-sticky-note.svg"
+        },
+        {
+          "tier": 2,
+          "name": "Whiteboard",
+          "file": "assets/items/strategy-2-whiteboard.svg"
+        },
+        {
+          "tier": 3,
+          "name": "Slide",
+          "file": "assets/items/strategy-3-slide.svg"
+        },
+        {
+          "tier": 4,
+          "name": "Slide deck",
+          "file": "assets/items/strategy-4-slide-deck.svg"
+        },
+        {
+          "tier": 5,
+          "name": "Strategy",
+          "file": "assets/items/strategy-5-strategy.svg"
+        },
+        {
+          "tier": 6,
+          "name": "Pivot",
+          "file": "assets/items/strategy-6-pivot.svg"
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "chapter": "Lead",
+      "name": "Data",
+      "generator": "Server rack",
+      "tiers": [
+        {
+          "tier": 1,
+          "name": "Cell",
+          "file": "assets/items/data-1-cell.svg"
+        },
+        {
+          "tier": 2,
+          "name": "Spreadsheet",
+          "file": "assets/items/data-2-spreadsheet.svg"
+        },
+        {
+          "tier": 3,
+          "name": "Chart",
+          "file": "assets/items/data-3-chart.svg"
+        },
+        {
+          "tier": 4,
+          "name": "Dashboard",
+          "file": "assets/items/data-4-dashboard.svg"
+        },
+        {
+          "tier": 5,
+          "name": "Forecast",
+          "file": "assets/items/data-5-forecast.svg"
+        },
+        {
+          "tier": 6,
+          "name": "Board report",
+          "file": "assets/items/data-6-board-report.svg"
+        }
+      ]
+    },
+    {
+      "id": "hiring",
+      "chapter": "Manager",
+      "name": "Hiring",
+      "generator": "Recruiter's phone",
+      "tiers": [
+        {
+          "tier": 1,
+          "name": "Résumé",
+          "file": "assets/items/hiring-1-resume.svg"
+        },
+        {
+          "tier": 2,
+          "name": "Interview",
+          "file": "assets/items/hiring-2-interview.svg"
+        },
+        {
+          "tier": 3,
+          "name": "Offer letter",
+          "file": "assets/items/hiring-3-offer-letter.svg"
+        },
+        {
+          "tier": 4,
+          "name": "New starter",
+          "file": "assets/items/hiring-4-new-starter.svg"
+        },
+        {
+          "tier": 5,
+          "name": "Team",
+          "file": "assets/items/hiring-5-team.svg"
+        },
+        {
+          "tier": 6,
+          "name": "Department",
+          "file": "assets/items/hiring-6-department.svg"
+        }
+      ]
+    },
+    {
+      "id": "culture",
+      "chapter": "Manager",
+      "name": "Office culture",
+      "generator": "Office fridge",
+      "tiers": [
+        {
+          "tier": 1,
+          "name": "Biscuit",
+          "file": "assets/items/culture-1-biscuit.svg"
+        },
+        {
+          "tier": 2,
+          "name": "Cupcake",
+          "file": "assets/items/culture-2-cupcake.svg"
+        },
+        {
+          "tier": 3,
+          "name": "Morning tea",
+          "file": "assets/items/culture-3-morning-tea.svg"
+        },
+        {
+          "tier": 4,
+          "name": "Birthday cake",
+          "file": "assets/items/culture-4-birthday-cake.svg"
+        },
+        {
+          "tier": 5,
+          "name": "Farewell card",
+          "file": "assets/items/culture-5-farewell-card.svg"
+        },
+        {
+          "tier": 6,
+          "name": "Christmas party",
+          "file": "assets/items/culture-6-christmas-party.svg"
+        }
+      ]
+    },
+    {
+      "id": "funding",
+      "chapter": "Exec",
+      "name": "Funding",
+      "generator": "Piggy bank",
+      "tiers": [
+        {
+          "tier": 1,
+          "name": "Coin",
+          "file": "assets/items/funding-1-coin.svg"
+        },
+        {
+          "tier": 2,
+          "name": "Coin stack",
+          "file": "assets/items/funding-2-coin-stack.svg"
+        },
+        {
+          "tier": 3,
+          "name": "Cash bundle",
+          "file": "assets/items/funding-3-cash-bundle.svg"
+        },
+        {
+          "tier": 4,
+          "name": "Term sheet",
+          "file": "assets/items/funding-4-term-sheet.svg"
+        },
+        {
+          "tier": 5,
+          "name": "Series A",
+          "file": "assets/items/funding-5-series-a.svg"
+        },
+        {
+          "tier": 6,
+          "name": "IPO bell",
+          "file": "assets/items/funding-6-ipo-bell.svg"
+        }
+      ]
+    },
+    {
+      "id": "garden",
+      "chapter": "Retirement",
+      "name": "Garden",
+      "generator": "Watering can",
+      "tiers": [
+        {
+          "tier": 1,
+          "name": "Seed packet",
+          "file": "assets/items/garden-1-seed-packet.svg"
+        },
+        {
+          "tier": 2,
+          "name": "Seedling",
+          "file": "assets/items/garden-2-seedling.svg"
+        },
+        {
+          "tier": 3,
+          "name": "Pot plant",
+          "file": "assets/items/garden-3-pot-plant.svg"
+        },
+        {
+          "tier": 4,
+          "name": "Tomato plant",
+          "file": "assets/items/garden-4-tomato-plant.svg"
+        },
+        {
+          "tier": 5,
+          "name": "Veggie patch",
+          "file": "assets/items/garden-5-veggie-patch.svg"
+        },
+        {
+          "tier": 6,
+          "name": "Greenhouse",
+          "file": "assets/items/garden-6-greenhouse.svg"
+        }
+      ]
+    }
+  ]
+}

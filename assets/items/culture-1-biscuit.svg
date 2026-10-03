@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-wood" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#f2c595"></stop><stop offset="0.55" stop-color="#b97c47"></stop><stop offset="1" stop-color="#6e4628"></stop></radialGradient><filter id="d-blur2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2"></feGaussianBlur></filter><filter id="d-blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
+<ellipse cx="62" cy="110" rx="38" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<circle cx="60" cy="66" r="40" fill="#6e4628"></circle>
+<circle cx="60" cy="61" r="40" fill="url(#r-wood)"></circle>
+<g fill="#4a2c1a"><rect x="40" y="42" width="11" height="9" rx="4"></rect><rect x="66" y="38" width="11" height="9" rx="4"></rect><rect x="50" y="60" width="11" height="9" rx="4"></rect><rect x="76" y="62" width="11" height="9" rx="4"></rect><rect x="38" y="76" width="11" height="9" rx="4"></rect><rect x="62" y="82" width="11" height="9" rx="4"></rect></g>
+<ellipse cx="42" cy="32" rx="10" ry="4" fill="#ffffff" opacity="0.6" transform="rotate(-25 42 32)" filter="url(#d-blur2)"></ellipse>
+</svg>

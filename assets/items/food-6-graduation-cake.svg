@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-blue" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#d3e7ff"></stop><stop offset="0.5" stop-color="#3f86f2"></stop><stop offset="1" stop-color="#1f4fa8"></stop></radialGradient><radialGradient id="r-cream" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fffdf6"></stop><stop offset="0.6" stop-color="#f3ecd9"></stop><stop offset="1" stop-color="#d6ccb0"></stop></radialGradient><radialGradient id="r-orange" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffd0a8"></stop><stop offset="0.5" stop-color="#ff8a3a"></stop><stop offset="1" stop-color="#c4561a"></stop></radialGradient><radialGradient id="r-pink" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffdcea"></stop><stop offset="0.5" stop-color="#ff8cb8"></stop><stop offset="1" stop-color="#c94f80"></stop></radialGradient><radialGradient id="r-white" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffffff"></stop><stop offset="0.45" stop-color="#f2f4f9"></stop><stop offset="1" stop-color="#c3cbdb"></stop></radialGradient><filter id="d-blur1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"></feGaussianBlur></filter></defs>
+<ellipse cx="60" cy="102" rx="48" ry="9" fill="url(#r-white)"></ellipse>
+<rect x="18" y="66" width="84" height="36" rx="16" fill="#c94f80"></rect>
+<rect x="18" y="62" width="84" height="36" rx="16" fill="url(#r-pink)"></rect>
+<rect x="32" y="44" width="56" height="28" rx="14" fill="#c9bf9f"></rect>
+<rect x="32" y="40" width="56" height="28" rx="14" fill="url(#r-cream)"></rect>
+<rect x="56" y="22" width="8" height="20" rx="4" fill="url(#r-blue)"></rect>
+<path d="M60 6 Q68 16 60 22 Q52 16 60 6 Z" fill="url(#r-orange)"></path>
+<circle cx="32" cy="82" r="3" fill="#ffffff"></circle><circle cx="52" cy="86" r="3" fill="#ffffff"></circle><circle cx="72" cy="82" r="3" fill="#ffffff"></circle><circle cx="90" cy="86" r="3" fill="#ffffff"></circle>
+<ellipse cx="42" cy="46" rx="8" ry="3" fill="#ffffff" opacity="0.9" filter="url(#d-blur1)"></ellipse>
+</svg>

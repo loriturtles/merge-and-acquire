@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-coffee" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#c08a63"></stop><stop offset="0.55" stop-color="#7a4a2c"></stop><stop offset="1" stop-color="#4a2c1a"></stop></radialGradient><radialGradient id="r-green" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#b8f6d4"></stop><stop offset="0.55" stop-color="#3fbf82"></stop><stop offset="1" stop-color="#1f7a50"></stop></radialGradient><filter id="d-blur1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"></feGaussianBlur></filter></defs>
+<path d="M60 90 V52" stroke="#2a9c66" stroke-width="6" stroke-linecap="round"></path>
+<path d="M60 60 Q38 38 26 52 Q40 70 60 60 Z" fill="url(#r-green)"></path>
+<path d="M60 54 Q82 28 96 42 Q82 62 60 54 Z" fill="url(#r-green)"></path>
+<path d="M12 104 Q60 70 108 104 Q108 110 102 110 H18 Q12 110 12 104 Z" fill="#3e2416"></path>
+<path d="M12 100 Q60 66 108 100 Q108 106 102 106 H18 Q12 106 12 100 Z" fill="url(#r-coffee)"></path>
+<ellipse cx="34" cy="50" rx="5" ry="2.5" fill="#ffffff" opacity="0.8" filter="url(#d-blur1)"></ellipse>
+<ellipse cx="80" cy="40" rx="5" ry="2.5" fill="#ffffff" opacity="0.8" filter="url(#d-blur1)"></ellipse>
+</svg>

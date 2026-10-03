@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-gold" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fff4bd"></stop><stop offset="0.5" stop-color="#ffc93a"></stop><stop offset="1" stop-color="#cf8f0c"></stop></radialGradient><radialGradient id="r-grey" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#f4f6fa"></stop><stop offset="0.55" stop-color="#a9b4c6"></stop><stop offset="1" stop-color="#6b778c"></stop></radialGradient><radialGradient id="r-white" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffffff"></stop><stop offset="0.45" stop-color="#f2f4f9"></stop><stop offset="1" stop-color="#c3cbdb"></stop></radialGradient><filter id="d-blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
+<ellipse cx="60" cy="114" rx="32" ry="5" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<path d="M30 4 L56 58 M90 4 L64 58" stroke="#1f4fa8" stroke-width="11" stroke-linecap="round"></path>
+<path d="M30 4 L56 58 M90 4 L64 58" stroke="#5c9bff" stroke-width="6" stroke-linecap="round"></path>
+<rect x="50" y="52" width="20" height="14" rx="6" fill="url(#r-grey)"></rect>
+<rect x="28" y="68" width="64" height="46" rx="16" fill="#aab4c8"></rect>
+<rect x="28" y="62" width="64" height="46" rx="16" fill="url(#r-white)"></rect>
+<rect x="38" y="72" width="20" height="24" rx="8" fill="url(#r-gold)"></rect>
+<path d="M66 78 H82 M66 89 H78" stroke="#c9d1df" stroke-width="5" stroke-linecap="round"></path>
+</svg>

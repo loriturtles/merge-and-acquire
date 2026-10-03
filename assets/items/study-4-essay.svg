@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-cream" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fffdf6"></stop><stop offset="0.6" stop-color="#f3ecd9"></stop><stop offset="1" stop-color="#d6ccb0"></stop></radialGradient><radialGradient id="r-white" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffffff"></stop><stop offset="0.45" stop-color="#f2f4f9"></stop><stop offset="1" stop-color="#c3cbdb"></stop></radialGradient><filter id="d-blur2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2"></feGaussianBlur></filter><filter id="d-blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
+<ellipse cx="56" cy="112" rx="36" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<rect x="32" y="14" width="62" height="84" rx="14" fill="url(#r-cream)" transform="rotate(7 63 56)"></rect>
+<rect x="22" y="28" width="64" height="82" rx="14" fill="#aab4c8"></rect>
+<rect x="22" y="22" width="64" height="82" rx="14" fill="url(#r-white)"></rect>
+<path d="M36 44 H72 M36 56 H72 M36 68 H72 M36 80 H60" stroke="#c9d1df" stroke-width="5" stroke-linecap="round"></path>
+<path d="M72 6 V32 A7 7 0 0 0 86 32 V14" fill="none" stroke="#8794aa" stroke-width="6" stroke-linecap="round"></path>
+<ellipse cx="34" cy="32" rx="8" ry="3.5" fill="#ffffff" opacity="0.9" filter="url(#d-blur2)"></ellipse>
+</svg>

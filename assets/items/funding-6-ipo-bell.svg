@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-gold" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fff4bd"></stop><stop offset="0.5" stop-color="#ffc93a"></stop><stop offset="1" stop-color="#cf8f0c"></stop></radialGradient><filter id="d-blur1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"></feGaussianBlur></filter></defs>
+<path d="M26 106 V30 Q26 26 30 26 H90 Q94 26 94 30 V106" fill="none" stroke="#6e4628" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M26 104 V30 Q26 26 30 26 H90 Q94 26 94 30 V104" fill="none" stroke="#b97c47" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M14 108 H106" stroke="#8794aa" stroke-width="6" stroke-linecap="round"></path>
+<path d="M60 30 V42" stroke="#8794aa" stroke-width="5" stroke-linecap="round"></path>
+<path d="M40 87 Q40 47 60 43 Q80 47 80 87 Q88 89 88 95 Q88 99 84 99 H36 Q32 99 32 95 Q32 89 40 87 Z" fill="#cf8f0c"></path>
+<path d="M40 82 Q40 42 60 38 Q80 42 80 82 Q88 84 88 90 Q88 94 84 94 H36 Q32 94 32 90 Q32 84 40 82 Z" fill="url(#r-gold)"></path>
+<circle cx="60" cy="100" r="7" fill="#cf8f0c"></circle>
+<rect x="47" y="50" width="7" height="24" rx="3.5" fill="#ffffff" opacity="0.8" filter="url(#d-blur1)"></rect>
+</svg>

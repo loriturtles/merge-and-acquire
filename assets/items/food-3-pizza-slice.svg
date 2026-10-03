@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-gold" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fff4bd"></stop><stop offset="0.5" stop-color="#ffc93a"></stop><stop offset="1" stop-color="#cf8f0c"></stop></radialGradient><radialGradient id="r-red" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffb3a6"></stop><stop offset="0.5" stop-color="#f04f3c"></stop><stop offset="1" stop-color="#a32a1e"></stop></radialGradient><radialGradient id="r-wood" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#f2c595"></stop><stop offset="0.55" stop-color="#b97c47"></stop><stop offset="1" stop-color="#6e4628"></stop></radialGradient><filter id="d-blur1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"></feGaussianBlur></filter><filter id="d-blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
+<ellipse cx="60" cy="112" rx="26" ry="5" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<path d="M20 39 Q60 19 100 39 Q104 41 102 45 L64 111 Q60 117 56 111 L18 45 Q16 41 20 39 Z" fill="#cf8f0c"></path>
+<path d="M20 34 Q60 14 100 34 Q104 36 102 40 L64 106 Q60 112 56 106 L18 40 Q16 36 20 34 Z" fill="url(#r-gold)"></path>
+<path d="M18 34 Q60 10 102 34 Q104 40 98 44 Q60 24 22 44 Q16 40 18 34 Z" fill="url(#r-wood)"></path>
+<circle cx="50" cy="56" r="8" fill="url(#r-red)"></circle><circle cx="72" cy="58" r="8" fill="url(#r-red)"></circle><circle cx="60" cy="80" r="7" fill="url(#r-red)"></circle>
+<ellipse cx="34" cy="28" rx="8" ry="3" fill="#ffffff" opacity="0.7" filter="url(#d-blur1)"></ellipse>
+</svg>

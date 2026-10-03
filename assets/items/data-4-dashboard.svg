@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-grey" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#f4f6fa"></stop><stop offset="0.55" stop-color="#a9b4c6"></stop><stop offset="1" stop-color="#6b778c"></stop></radialGradient><radialGradient id="r-navy" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#8a81b8"></stop><stop offset="0.6" stop-color="#3a3358"></stop><stop offset="1" stop-color="#221b38"></stop></radialGradient><filter id="d-blur1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"></feGaussianBlur></filter></defs>
+<path d="M50 90 L46 106 Q45 110 50 110 H70 Q75 110 74 106 L70 90 Z" fill="url(#r-grey)"></path>
+<rect x="8" y="22" width="104" height="72" rx="18" fill="#221b38"></rect>
+<rect x="8" y="16" width="104" height="72" rx="18" fill="url(#r-navy)"></rect>
+<rect x="16" y="24" width="88" height="56" rx="10" fill="#ffffff"></rect>
+<polyline points="26,70 40,58 54,64 70,44 86,50 96,36" fill="none" stroke="#3f86f2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"></polyline>
+<rect x="24" y="30" width="22" height="9" rx="4.5" fill="#3fbf82"></rect><rect x="50" y="30" width="14" height="9" rx="4.5" fill="#ffc93a"></rect>
+<ellipse cx="26" cy="20" rx="8" ry="2.5" fill="#ffffff" opacity="0.5" filter="url(#d-blur1)"></ellipse>
+</svg>

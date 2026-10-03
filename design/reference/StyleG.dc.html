@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Glossy vinyl style guide</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#3f86f2}a:hover{color:#2a2140}
+</style>
+</helmet>
+<div style="width: 1360px; height: 960px; box-sizing: border-box; padding: 40px; background: #eef1f7; color: #2a2140; font-family: 'Manrope', system-ui, sans-serif; display: flex; flex-direction: column; gap: 24px; position: relative">
+<svg width="0" height="0" style="position: absolute" aria-hidden="true">
+<defs>
+<filter id="d-blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter>
+<filter id="d-blur2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2"></feGaussianBlur></filter>
+<filter id="d-blur1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"></feGaussianBlur></filter>
+<filter id="edge" x="-10%" y="-10%" width="120%" height="120%"><feMorphology in="SourceAlpha" operator="dilate" radius="1" result="d"></feMorphology><feFlood flood-color="#2a2140" flood-opacity="0.4"></feFlood><feComposite in2="d" operator="in" result="o"></feComposite><feMerge><feMergeNode in="o"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge></filter>
+<radialGradient id="r-white" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffffff"></stop><stop offset="0.45" stop-color="#f2f4f9"></stop><stop offset="1" stop-color="#c3cbdb"></stop></radialGradient>
+<radialGradient id="r-red" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffb3a6"></stop><stop offset="0.5" stop-color="#f04f3c"></stop><stop offset="1" stop-color="#a32a1e"></stop></radialGradient>
+<radialGradient id="r-gold" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fff4bd"></stop><stop offset="0.5" stop-color="#ffc93a"></stop><stop offset="1" stop-color="#cf8f0c"></stop></radialGradient>
+<radialGradient id="r-green" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#b8f6d4"></stop><stop offset="0.55" stop-color="#3fbf82"></stop><stop offset="1" stop-color="#1f7a50"></stop></radialGradient>
+<radialGradient id="r-blue" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#d3e7ff"></stop><stop offset="0.5" stop-color="#3f86f2"></stop><stop offset="1" stop-color="#1f4fa8"></stop></radialGradient>
+<radialGradient id="r-kraft" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fae2bc"></stop><stop offset="0.55" stop-color="#d9b27a"></stop><stop offset="1" stop-color="#9c7440"></stop></radialGradient>
+<radialGradient id="r-navy" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#8a81b8"></stop><stop offset="0.6" stop-color="#3a3358"></stop><stop offset="1" stop-color="#221b38"></stop></radialGradient>
+<radialGradient id="r-terra" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffc3a0"></stop><stop offset="0.55" stop-color="#e2774a"></stop><stop offset="1" stop-color="#a8441f"></stop></radialGradient>
+<radialGradient id="r-orange" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffd0a8"></stop><stop offset="0.5" stop-color="#ff8a3a"></stop><stop offset="1" stop-color="#c4561a"></stop></radialGradient>
+<radialGradient id="r-cream" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fffdf6"></stop><stop offset="0.6" stop-color="#f3ecd9"></stop><stop offset="1" stop-color="#d6ccb0"></stop></radialGradient>
+<radialGradient id="r-glass" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#e4f2ff"></stop><stop offset="0.6" stop-color="#3f86f2"></stop><stop offset="1" stop-color="#1f4fa8"></stop></radialGradient>
+
+<symbol id="b-email" viewBox="0 0 120 120">
+<ellipse cx="62" cy="104" rx="44" ry="7" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<rect x="14" y="36" width="92" height="64" rx="24" fill="#a9b3c8"></rect>
+<rect x="14" y="30" width="92" height="64" rx="24" fill="url(#r-white)"></rect>
+<path d="M24 42 Q60 76 96 42" fill="none" stroke="#cdd3e0" stroke-width="5" stroke-linecap="round"></path>
+<circle cx="60" cy="66" r="13" fill="url(#r-red)"></circle>
+<ellipse cx="56" cy="61" rx="5" ry="3" fill="#ffffff" opacity="0.9" filter="url(#d-blur1)"></ellipse>
+<ellipse cx="38" cy="40" rx="16" ry="6" fill="#ffffff" opacity="0.9" filter="url(#d-blur2)"></ellipse>
+<path d="M32 88 Q60 95 88 88" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.7" stroke-linecap="round"></path>
+</symbol>
+<symbol id="b-coin" viewBox="0 0 120 120">
+<ellipse cx="60" cy="106" rx="40" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<ellipse cx="60" cy="66" rx="44" ry="38" fill="#b9800a"></ellipse>
+<ellipse cx="60" cy="60" rx="44" ry="38" fill="url(#r-gold)"></ellipse>
+<ellipse cx="60" cy="60" rx="31" ry="26" fill="none" stroke="#f2b52c" stroke-width="5"></ellipse>
+<text x="60" y="76" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-weight="700" font-size="44" fill="#c08a10">$</text>
+<ellipse cx="40" cy="38" rx="14" ry="7" fill="#ffffff" opacity="0.9" transform="rotate(-30 40 38)" filter="url(#d-blur2)"></ellipse>
+<path d="M32 86 Q60 100 88 86" fill="none" stroke="#fff3c4" stroke-width="3" opacity="0.8" stroke-linecap="round"></path>
+</symbol>
+<symbol id="b-cup" viewBox="0 0 120 120">
+<ellipse cx="60" cy="110" rx="30" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<path d="M30 42 Q30 36 37 36 H83 Q90 36 90 42 L85 96 Q83 110 60 110 Q37 110 35 96 Z" fill="url(#r-white)"></path>
+<path d="M33 58 Q60 64 87 58 L84 82 Q60 90 36 82 Z" fill="url(#r-kraft)"></path>
+<circle cx="56" cy="72" r="7" fill="url(#r-green)"></circle>
+<rect x="22" y="24" width="76" height="18" rx="9" fill="url(#r-navy)"></rect>
+<ellipse cx="60" cy="24" rx="24" ry="9" fill="#7a71a8"></ellipse>
+<ellipse cx="54" cy="21" rx="10" ry="3" fill="#ffffff" opacity="0.6" filter="url(#d-blur1)"></ellipse>
+<rect x="40" y="46" width="8" height="52" rx="4" fill="#ffffff" opacity="0.8" filter="url(#d-blur1)"></rect>
+</symbol>
+<symbol id="b-book" viewBox="0 0 120 120">
+<ellipse cx="60" cy="110" rx="42" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<rect x="22" y="28" width="76" height="84" rx="16" fill="#1f4fa8"></rect>
+<rect x="30" y="22" width="70" height="80" rx="14" fill="url(#r-cream)"></rect>
+<path d="M66 96 V114 Q66 117 69 115 L72 112 L75 115 Q78 117 78 114 V96 Z" fill="url(#r-red)"></path>
+<rect x="18" y="18" width="72" height="84" rx="16" fill="url(#r-blue)"></rect>
+<rect x="36" y="38" width="38" height="22" rx="11" fill="url(#r-gold)"></rect>
+<ellipse cx="36" cy="30" rx="12" ry="5" fill="#ffffff" opacity="0.8" filter="url(#d-blur2)" transform="rotate(-20 36 30)"></ellipse>
+<path d="M30 96 Q54 100 80 96" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.5" stroke-linecap="round"></path>
+</symbol>
+<symbol id="b-pot" viewBox="0 0 120 120">
+<ellipse cx="60" cy="110" rx="32" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<ellipse cx="60" cy="30" rx="15" ry="22" fill="url(#r-green)"></ellipse>
+<ellipse cx="36" cy="42" rx="14" ry="18" fill="url(#r-green)" transform="rotate(-35 36 42)"></ellipse>
+<ellipse cx="84" cy="42" rx="14" ry="18" fill="url(#r-green)" transform="rotate(35 84 42)"></ellipse>
+<ellipse cx="55" cy="18" rx="4" ry="7" fill="#ffffff" opacity="0.8" filter="url(#d-blur1)"></ellipse>
+<path d="M30 64 H90 L86 98 Q84 110 60 110 Q36 110 34 98 Z" fill="url(#r-terra)"></path>
+<rect x="24" y="54" width="72" height="18" rx="9" fill="url(#r-terra)"></rect>
+<ellipse cx="60" cy="57" rx="24" ry="3.5" fill="#4a2c1a"></ellipse>
+<rect x="38" y="76" width="7" height="24" rx="3.5" fill="#ffffff" opacity="0.6" filter="url(#d-blur1)"></rect>
+</symbol>
+<symbol id="b-rocket" viewBox="0 0 120 120">
+<ellipse cx="60" cy="112" rx="26" ry="5" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<g transform="rotate(14 60 60)">
+<path d="M48 88 Q60 122 72 88 Q60 96 48 88 Z" fill="url(#r-orange)"></path>
+<path d="M53 90 Q60 108 67 90 Z" fill="#ffe27a"></path>
+<path d="M42 62 Q16 70 20 98 Q34 96 46 86 Z" fill="url(#r-red)"></path>
+<path d="M78 62 Q104 70 100 98 Q86 96 74 86 Z" fill="#b83224"></path>
+<path d="M60 8 C88 20 92 62 80 88 Q60 98 40 88 C28 62 32 20 60 8 Z" fill="url(#r-white)"></path>
+<path d="M60 8 C73 13 81 23 84 34 Q60 44 36 34 C39 23 47 13 60 8 Z" fill="url(#r-red)"></path>
+<circle cx="60" cy="56" r="14" fill="url(#r-navy)"></circle>
+<circle cx="60" cy="56" r="9" fill="url(#r-glass)"></circle>
+<ellipse cx="57" cy="52" rx="3.5" ry="2" fill="#ffffff" opacity="0.9"></ellipse>
+<rect x="42" y="40" width="7" height="40" rx="3.5" fill="#ffffff" opacity="0.85" filter="url(#d-blur1)"></rect>
+<ellipse cx="50" cy="20" rx="6" ry="3" fill="#ffffff" opacity="0.8" filter="url(#d-blur1)"></ellipse>
+</g>
+</symbol>
+</defs>
+</svg>
+
+<div style="display: flex; flex-direction: column; gap: 4px">
+<span style="font-family: 'DM Mono', monospace; font-size: 13px; color: #4d4866; letter-spacing: 0.06em; text-transform: uppercase">Chosen direction · G, bubbly · Type: Manrope 800 / 700 / 500</span>
+<h1 style="margin: 0; font-size: 38px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05">Glossy vinyl: style guide</h1>
+<p style="margin: 0; font-size: 17px; color: #4d4866">The rules every item follows, so the whole game looks like one set of squishy, glossy desk toys.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: 560px minmax(0, 1fr); gap: 24px">
+
+<div style="background: #ffffff; border-radius: 24px; padding: 20px; display: flex; gap: 18px; box-shadow: 0 4px 14px rgba(42,33,64,0.08)">
+<div style="position: relative; width: 260px; height: 260px; flex: none; background: #e6ebf4; border-radius: 20px">
+<svg width="260" height="260" aria-label="Oat latte, lit"><use href="#b-cup"></use></svg>
+<span style="position: absolute; left: 14px; top: 12px; font-family: 'DM Mono', monospace; font-size: 12px; color: #4d4866">light ↘</span>
+<span style="position: absolute; left: 66px; top: 116px; width: 24px; height: 24px; border-radius: 50%; background: #2a2140; color: #ffffff; font-size: 13px; font-weight: 700; display: grid; place-items: center">1</span>
+<span style="position: absolute; left: 150px; top: 30px; width: 24px; height: 24px; border-radius: 50%; background: #2a2140; color: #ffffff; font-size: 13px; font-weight: 700; display: grid; place-items: center">2</span>
+<span style="position: absolute; left: 180px; top: 150px; width: 24px; height: 24px; border-radius: 50%; background: #2a2140; color: #ffffff; font-size: 13px; font-weight: 700; display: grid; place-items: center">3</span>
+<span style="position: absolute; left: 196px; top: 226px; width: 24px; height: 24px; border-radius: 50%; background: #2a2140; color: #ffffff; font-size: 13px; font-weight: 700; display: grid; place-items: center">4</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; min-width: 0">
+<span style="font-size: 20px; font-weight: 700">One light, top left</span>
+<div style="display: flex; gap: 8px"><b style="font-size: 15px">1</b><span style="font-size: 14px; color: #4d4866; line-height: 1.35"><b style="color: #2a2140; font-weight: 600">Soft shine</b> on the lit side: a blurred streak or blob, one per surface.</span></div>
+<div style="display: flex; gap: 8px"><b style="font-size: 15px">2</b><span style="font-size: 14px; color: #4d4866; line-height: 1.35"><b style="color: #2a2140; font-weight: 600">Puffy form.</b> Every shape is inflated: big corner radii, no sharp points, curves instead of straight edges.</span></div>
+<div style="display: flex; gap: 8px"><b style="font-size: 15px">3</b><span style="font-size: 14px; color: #4d4866; line-height: 1.35"><b style="color: #2a2140; font-weight: 600">Shading wraps round.</b> Light centre top left, darkening to the bottom right on every part.</span></div>
+<div style="display: flex; gap: 8px"><b style="font-size: 15px">4</b><span style="font-size: 14px; color: #4d4866; line-height: 1.35"><b style="color: #2a2140; font-weight: 600">Contact shadow</b> under every item, soft and slightly right of centre.</span></div>
+<span style="font-size: 14px; color: #4d4866; line-height: 1.35; padding-top: 4px; border-top: 1.5px solid #e3e8f1">Camera: slightly above, the same for every item. Bigger items get fuller, rounder shapes.</span>
+</div>
+</div>
+
+<div style="background: #ffffff; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 4px 14px rgba(42,33,64,0.08); min-width: 0">
+<span style="font-size: 20px; font-weight: 700">Palette: highlight, base, shadow</span>
+<div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px">
+<sc-for list="{{swatches}}" as="s" hint-placeholder-count="10">
+<div style="display: flex; flex-direction: column; gap: 5px; min-width: 0">
+<div style="display: flex; height: 44px; border-radius: 14px; overflow: hidden; box-shadow: inset 0 0 0 1.5px rgba(42,33,64,0.12)">
+<div style="flex: 1; background: {{s.hi}}"></div><div style="flex: 1.4; background: {{s.base}}"></div><div style="flex: 1; background: {{s.lo}}"></div>
+</div>
+<span style="font-size: 14px; font-weight: 600">{{s.name}}</span>
+<span style="font-family: 'DM Mono', monospace; font-size: 10.5px; color: #6b6585">{{s.base}}</span>
+</div>
+</sc-for>
+</div>
+<span style="font-size: 14px; color: #4d4866; line-height: 1.35">Each tier in a chain gets its own hero colour from this set. Shading runs highlight → base → shadow, never past the shadow tone.</span>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) 560px; gap: 24px">
+<div style="background: #ffffff; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 4px 14px rgba(42,33,64,0.08); min-width: 0">
+<span style="font-size: 20px; font-weight: 700">Rules for small screens</span>
+<sc-for list="{{rules}}" as="r" hint-placeholder-count="6">
+<div style="display: flex; gap: 10px; align-items: baseline">
+<span style="width: 8px; height: 8px; border-radius: 50%; background: #3f86f2; flex: none; transform: translateY(-2px)"></span>
+<span style="font-size: 15px; line-height: 1.4"><b style="font-weight: 600">{{r.t}}</b> <span style="color: #4d4866">{{r.d}}</span></span>
+</div>
+</sc-for>
+</div>
+
+<div style="background: #ffffff; border-radius: 24px; padding: 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 14px rgba(42,33,64,0.08)">
+<span style="font-size: 20px; font-weight: 700">Board-size test</span>
+<div style="display: flex; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px; align-items: flex-start">
+<div style="background: #b9c5da; border-radius: 16px; padding: 5px; display: grid; grid-template-columns: repeat(3, 44px); gap: 4px">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="6"><div style="width: 44px; height: 44px; border-radius: 13px; background: #dbe2ee; display: grid; place-items: center"><svg width="40" height="40" aria-hidden="true"><use href="{{it}}"></use></svg></div></sc-for>
+</div>
+<span style="font-size: 13px; font-weight: 600">Pure gloss</span>
+<span style="font-size: 12px; color: #4d4866; max-width: 150px">White items start to melt into the cells.</span>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px; align-items: flex-start">
+<div style="background: #b9c5da; border-radius: 16px; padding: 5px; display: grid; grid-template-columns: repeat(3, 44px); gap: 4px">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="6"><div style="width: 44px; height: 44px; border-radius: 13px; background: #dbe2ee; display: grid; place-items: center"><svg width="40" height="40" aria-hidden="true"><use href="{{it}}" filter="url(#edge)"></use></svg></div></sc-for>
+</div>
+<span style="font-size: 13px; font-weight: 600">Gloss + soft edge (recommended)</span>
+<span style="font-size: 12px; color: #4d4866; max-width: 170px">A 1px edge at 40% opacity, added only at board size.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1360,"height":960}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const swatches = [
+      { name: 'Red', hi: '#ffb3a6', base: '#f04f3c', lo: '#a32a1e' },
+      { name: 'Orange', hi: '#ffd0a8', base: '#ff8a3a', lo: '#c4561a' },
+      { name: 'Yellow', hi: '#fff4bd', base: '#ffc93a', lo: '#cf8f0c' },
+      { name: 'Green', hi: '#b8f6d4', base: '#3fbf82', lo: '#1f7a50' },
+      { name: 'Blue', hi: '#d3e7ff', base: '#3f86f2', lo: '#1f4fa8' },
+      { name: 'Purple', hi: '#e6d8ff', base: '#8f63f0', lo: '#4f2fb0' },
+      { name: 'Pink', hi: '#ffdcea', base: '#ff8cb8', lo: '#c94f80' },
+      { name: 'Paper', hi: '#ffffff', base: '#f2f4f9', lo: '#c3cbdb' },
+      { name: 'Kraft', hi: '#fae2bc', base: '#d9b27a', lo: '#9c7440' },
+      { name: 'Ink', hi: '#8a81b8', base: '#3a3358', lo: '#221b38' }
+    ];
+    const rules = [
+      { t: 'Round everything.', d: 'Corners at least 15% of the item’s size. No sharp points, even on fins, flaps and arrows.' },
+      { t: 'One hero colour per item.', d: 'Neighbouring tiers in a chain must differ in colour, size or both.' },
+      { t: 'Strong light and dark split.', d: 'Squint at it: if the lit side and shadow side blur together, push them apart.' },
+      { t: 'No thin parts.', d: 'Anything thinner than about 6% of the item’s width disappears at board size.' },
+      { t: 'Silhouette first.', d: 'Each item should be recognisable as a solid blob before any detail is added.' },
+      { t: 'Soft edge at board size.', d: 'Add a faint dark edge so pale items stay separate from the board.' }
+    ];
+    const items = ['#b-email', '#b-cup', '#b-coin', '#b-book', '#b-pot', '#b-rocket'];
+    return { swatches, rules, items };
+  }
+}
+</script>
+</body>
+</html>

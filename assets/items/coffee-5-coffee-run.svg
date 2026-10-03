@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-green" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#b8f6d4"></stop><stop offset="0.55" stop-color="#3fbf82"></stop><stop offset="1" stop-color="#1f7a50"></stop></radialGradient><radialGradient id="r-kraft" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fae2bc"></stop><stop offset="0.55" stop-color="#d9b27a"></stop><stop offset="1" stop-color="#9c7440"></stop></radialGradient><radialGradient id="r-navy" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#8a81b8"></stop><stop offset="0.6" stop-color="#3a3358"></stop><stop offset="1" stop-color="#221b38"></stop></radialGradient><radialGradient id="r-white" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffffff"></stop><stop offset="0.45" stop-color="#f2f4f9"></stop><stop offset="1" stop-color="#c3cbdb"></stop></radialGradient><filter id="d-blur1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"></feGaussianBlur></filter><filter id="d-blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter><symbol id="b-cup" viewBox="0 0 120 120">
+<ellipse cx="60" cy="110" rx="30" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<path d="M30 42 Q30 36 37 36 H83 Q90 36 90 42 L85 96 Q83 110 60 110 Q37 110 35 96 Z" fill="url(#r-white)"></path>
+<path d="M33 58 Q60 64 87 58 L84 82 Q60 90 36 82 Z" fill="url(#r-kraft)"></path>
+<circle cx="56" cy="72" r="7" fill="url(#r-green)"></circle>
+<rect x="22" y="24" width="76" height="18" rx="9" fill="url(#r-navy)"></rect>
+<ellipse cx="60" cy="24" rx="24" ry="9" fill="#7a71a8"></ellipse>
+<rect x="40" y="46" width="8" height="52" rx="4" fill="#ffffff" opacity="0.8" filter="url(#d-blur1)"></rect>
+</symbol></defs>
+<ellipse cx="60" cy="112" rx="48" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<use href="#b-cup" x="-2" y="2" width="56" height="76"></use>
+<use href="#b-cup" x="32" y="-6" width="56" height="76"></use>
+<use href="#b-cup" x="66" y="2" width="56" height="76"></use>
+<path d="M10 77 H110 Q114 77 113 81 L106 109 Q105 113 100 113 H20 Q15 113 14 109 L7 81 Q6 77 10 77 Z" fill="#9c7440"></path>
+<path d="M10 72 H110 Q114 72 113 76 L106 104 Q105 108 100 108 H20 Q15 108 14 104 L7 76 Q6 72 10 72 Z" fill="url(#r-kraft)"></path>
+<ellipse cx="28" cy="80" rx="11" ry="3.5" fill="#ffffff" opacity="0.7" filter="url(#d-blur1)"></ellipse>
+</svg>

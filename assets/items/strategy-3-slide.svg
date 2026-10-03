@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-gold" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fff4bd"></stop><stop offset="0.5" stop-color="#ffc93a"></stop><stop offset="1" stop-color="#cf8f0c"></stop></radialGradient><radialGradient id="r-red" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffb3a6"></stop><stop offset="0.5" stop-color="#f04f3c"></stop><stop offset="1" stop-color="#a32a1e"></stop></radialGradient><radialGradient id="r-white" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffffff"></stop><stop offset="0.45" stop-color="#f2f4f9"></stop><stop offset="1" stop-color="#c3cbdb"></stop></radialGradient><filter id="d-blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
+<ellipse cx="60" cy="104" rx="46" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<rect x="10" y="32" width="100" height="64" rx="18" fill="#aab4c8"></rect>
+<rect x="10" y="26" width="100" height="64" rx="18" fill="url(#r-white)"></rect>
+<rect x="22" y="38" width="50" height="9" rx="4.5" fill="#3a3358"></rect>
+<circle cx="40" cy="68" r="14" fill="url(#r-gold)"></circle>
+<path d="M40 68 V54 A14 14 0 0 1 54 68 Z" fill="url(#r-red)"></path>
+<path d="M64 62 H96 M64 74 H88" stroke="#c9d1df" stroke-width="6" stroke-linecap="round"></path>
+</svg>
