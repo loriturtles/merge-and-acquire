@@ -1,15 +1,17 @@
 import { useEffect, useLayoutEffect, useRef, useState, type Dispatch } from 'react';
 import { getTier } from '../content/chains';
-import { characters } from '../content/characters';
+import { getCharacter } from '../content/characters';
+import { getStage } from '../content/paths';
+import { cast, payout } from '../game/career';
 import { canFill, matchItems } from '../game/orders';
 import type { Action } from '../game/state';
 import type { ChatMessage, GameState, Order, OrderItem } from '../game/types';
 import { avatarArt, itemArt } from './art';
-import { formatAgo, formatMoney } from './format';
+import { formatAgo, formatCountdown, formatMoney } from './format';
 
 const CHANNEL = '# team-requests';
 
-const who = (id: string) => characters.find((c) => c.id === id);
+const who = getCharacter;
 
 /** Item icons for a request, each ticked when it's already on the board. */
 function ItemIcons({ items, have, size = 28, overlap = false }: { items: OrderItem[]; have: boolean[]; size?: number; overlap?: boolean }) {
@@ -59,7 +61,7 @@ function PreviewRow({ state, order, dispatch, onOpen }: { state: GameState; orde
       ) : (
         <div className="reward">
           <ItemIcons items={order.items} have={have} size={26} overlap />
-          <span>+{formatMoney(order.reward)}</span>
+          <span>+{formatMoney(payout(state, order, state.updatedAt))}</span>
         </div>
       )}
     </div>
@@ -70,19 +72,40 @@ function unreadCount(state: GameState): number {
   return state.chat.filter((m) => m.from !== 'you' && m.at > state.chatReadAt).length;
 }
 
-export function TeamChat({ state, dispatch, onOpen }: { state: GameState; dispatch: Dispatch<Action>; onOpen: () => void }) {
+export function TeamChat({
+  state,
+  dispatch,
+  onOpen,
+  onSurvey,
+}: {
+  state: GameState;
+  dispatch: Dispatch<Action>;
+  onOpen: () => void;
+  onSurvey: () => void;
+}) {
   const ready = state.orders.filter((o) => canFill(state.board, o)).length;
   const unread = unreadCount(state);
+  const now = state.updatedAt;
+  const surveyOpen = state.surveyEndsAt > now;
+  const mood = state.moodUntil > now;
   return (
     <section className="chat card" aria-label="Team requests">
-      <button className="chat-head" onClick={onOpen}>
-        <span className="chat-channel">{CHANNEL}</span>
-        {unread > 0 && <span className="badge badge-red">{unread} new</span>}
-        {ready > 0 && <span className="badge badge-green">{ready} ready</span>}
-        <span className="chat-open" aria-hidden>
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6 L15 12 L9 18" /></svg>
-        </span>
-      </button>
+      <div className="chat-head">
+        <button className="chat-head-open" onClick={onOpen}>
+          <span className="chat-channel">{CHANNEL}</span>
+          {unread > 0 && <span className="badge badge-red">{unread} new</span>}
+          {ready > 0 && <span className="badge badge-green">{ready} ready</span>}
+          <span className="chat-open" aria-hidden>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6 L15 12 L9 18" /></svg>
+          </span>
+        </button>
+        {surveyOpen && (
+          <button className="event-pill" onClick={onSurvey}>
+            Survey · ends {formatCountdown(state.surveyEndsAt - now)}
+          </button>
+        )}
+        {!surveyOpen && mood && <span className="event-pill event-pill-mood">Mood up · +25%</span>}
+      </div>
       {state.orders.map((order) => (
         <PreviewRow key={order.id} state={state} order={order} dispatch={dispatch} onOpen={onOpen} />
       ))}
@@ -109,11 +132,11 @@ function RequestCard({ state, message, dispatch }: { state: GameState; message: 
           <span className="request-status">Delivered</span>
         ) : status!.fillable ? (
           <button className="btn btn-primary btn-deliver" onClick={deliver(dispatch, order.id)}>
-            Deliver · +{formatMoney(order.reward)}
+            Deliver · +{formatMoney(payout(state, order, state.updatedAt))}
           </button>
         ) : (
           <span className="request-status">
-            {status!.have.filter(Boolean).length} of {items.length} on your desk · +{formatMoney(order.reward)}
+            {status!.have.filter(Boolean).length} of {items.length} on your desk · +{formatMoney(payout(state, order, state.updatedAt))}
           </span>
         )}
       </div>
@@ -127,7 +150,7 @@ export function ChatSheet({ state, dispatch, onClose }: { state: GameState; disp
   // Where 'New' starts is fixed when the sheet opens, even though reading updates chatReadAt.
   const [readAt] = useState(state.chatReadAt);
   const firstUnread = state.chat.find((m) => m.from !== 'you' && m.at > readAt)?.id;
-  const cast = characters.filter((c) => c.chapter === state.chapterId);
+  const members = cast(state).map((id) => getCharacter(id)!).filter(Boolean);
 
   useEffect(() => {
     dispatch({ type: 'readChat', now: Date.now() });
@@ -148,10 +171,10 @@ export function ChatSheet({ state, dispatch, onClose }: { state: GameState; disp
         </button>
         <div className="sheet-title">
           <span className="chat-channel">{CHANNEL}</span>
-          <span className="sheet-sub">{cast.length + 1} members · the share house</span>
+          <span className="sheet-sub">{members.length + 1} members · {getStage(state.stage).space.toLowerCase()}</span>
         </div>
         <span className="sheet-members" aria-hidden>
-          {cast.slice(0, 4).map((c) => (
+          {members.slice(0, 4).map((c) => (
             <img key={c.id} src={avatarArt(c.id)} alt="" width={24} height={24} />
           ))}
         </span>
@@ -159,6 +182,13 @@ export function ChatSheet({ state, dispatch, onClose }: { state: GameState; disp
       <div className="sheet-list" ref={listRef}>
         {state.chat.map((m) => {
           const divider = m.id === firstUnread && <div className="divider-new">New</div>;
+          if (m.from === 'system') {
+            return (
+              <div key={m.id} className="divider-chapter">
+                {m.text}
+              </div>
+            );
+          }
           if (m.from === 'you') {
             return (
               <div key={m.id}>

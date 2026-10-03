@@ -109,7 +109,8 @@ export function Board({ state, dispatch }: { state: GameState; dispatch: Dispatc
         {cells.map((piece, i) => {
           const isGen = piece?.kind === 'generator';
           const lifted = drag?.active && drag.from === i;
-          const fresh = event && (event.type === 'spawn' || event.type === 'merge') && event.index === i;
+          const fresh =
+            event && (event.type === 'spawn' || event.type === 'merge' || event.type === 'paged' || event.type === 'upgraded') && event.index === i;
           const denied = event?.type === 'denied' && event.index === i;
           const isWanted = piece?.kind === 'item' && wanted.has(`${piece.chain}-${piece.tier}`);
           const classes = [
@@ -132,7 +133,7 @@ export function Board({ state, dispatch }: { state: GameState; dispatch: Dispatc
                   className={[
                     'piece',
                     lifted && 'piece-lifted',
-                    fresh && (event!.type === 'merge' ? 'anim-merge' : 'anim-spawn'),
+                    fresh && (event!.type === 'spawn' ? 'anim-spawn' : 'anim-merge'),
                     denied && 'anim-shake',
                   ]
                     .filter(Boolean)

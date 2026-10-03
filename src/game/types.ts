@@ -1,4 +1,5 @@
 import type { ChainId } from '../content/chains';
+import type { PathId, StageId } from '../content/paths';
 
 export interface ItemPiece {
   kind: 'item';
@@ -54,22 +55,79 @@ export type GameEvent =
   | { type: 'deliver'; orderId: number; amount: number; at: number }
   | { type: 'sell'; amount: number; at: number }
   | { type: 'payday'; amount: number; count: number; at: number }
-  | { type: 'denied'; index: number; reason: 'no-hours' | 'board-full'; at: number };
+  | { type: 'denied'; index: number; reason: 'no-hours' | 'board-full' | 'no-shares' | 'no-salary'; at: number }
+  | { type: 'paged'; index: number; at: number }
+  | { type: 'burnout'; at: number }
+  | { type: 'overtime'; at: number }
+  | { type: 'vested'; amount: number; at: number }
+  | { type: 'bought'; taskId: string; at: number }
+  | { type: 'upgraded'; index: number; at: number }
+  | { type: 'refilled'; at: number };
+
+/** Unvested shares: visible but not spendable until `vestAt`. */
+export interface Grant {
+  amount: number;
+  vestAt: number;
+  reason: string;
+}
+
+/** Big moments that need a card on screen, shown one at a time until dismissed. */
+export type Notice =
+  | { type: 'promotion'; from: string; to: string; oldPay: number; newPay: number; shares: number }
+  | { type: 'review'; stage: StageId; rating: string; line: string; ordersFilled: number; target: number; shares: number }
+  | { type: 'choose-path' }
+  | { type: 'new-chapter'; stage: StageId }
+  | { type: 'space-done'; spaceId: string; shares: number };
 
 export interface GameState {
-  version: 2;
-  chapterId: string;
+  version: 3;
+  stage: StageId;
+  /** Chosen after Uni. */
+  path: PathId | null;
   titleIndex: number;
+  /** XP towards the next title. */
+  xp: number;
+  /** Total levels gained, across all chapters (Lv in the header). */
+  level: number;
+  /** Generators waiting for a free cell after a new chapter unlocked them. */
+  pendingGenerators: ChainId[];
   board: Board;
   selected: number | null;
 
+  /** Negative while working overtime. */
   hours: number;
   /** When the current refill interval started. */
   hoursAnchor: number;
+  /** Times of overtime hours worked, for the rolling 24h burnout check. */
+  overtimeLog: number[];
+  burntOutUntil: number;
 
   salary: number;
+  /** Vested, spendable shares. */
   shares: number;
+  vesting: Grant[];
   nextPaydayAt: number;
+  /** Engineer path: when the pager next drops a bug. */
+  nextPageAt: number;
+
+  /** Engagement survey: open until `surveyEndsAt` (0 when none), then a mood boost until `moodUntil`. */
+  surveyEndsAt: number;
+  nextSurveyAt: number;
+  moodUntil: number;
+
+  /** Completed rebuild tasks per space id. */
+  office: Record<string, string[]>;
+
+  stats: {
+    /** Orders filled in the current chapter, for the performance review. */
+    ordersThisChapter: number;
+    ordersTotal: number;
+    /** Deliveries per character id. */
+    deliveredTo: Record<string, number>;
+  };
+  /** Chapters whose performance review has happened. */
+  reviewed: StageId[];
+  notices: Notice[];
 
   orders: Order[];
   nextOrderId: number;

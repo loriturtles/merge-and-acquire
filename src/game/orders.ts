@@ -1,19 +1,33 @@
 import { economy } from '../config/economy';
-import { maxTierOf } from '../content/chains';
-import type { ChapterDef } from '../content/chapters';
-import { characters, FALLBACK, linesFor, linesForRole, multiLines, type Role } from '../content/characters';
-import { pick, pickWeighted } from './rng';
+import { maxTierOf, type ChainId } from '../content/chains';
+import { FALLBACK, getCharacter, linesFor, multiLinesFor, type Character } from '../content/characters';
+import { pick, pickWeighted, rand } from './rng';
 import type { Board, Order, OrderItem } from './types';
+
+/** What requests can contain and who can send them, from the current career (see career.ts). */
+export interface OrderContext {
+  /** Unlocked chains grouped by chapter, oldest first. */
+  chainGroups: ChainId[][];
+  /** Character ids who can post requests. */
+  cast: string[];
+  itemCountWeights: readonly number[];
+}
 
 const key = (i: OrderItem) => `${i.chain}-${i.tier}`;
 
 /** Picks 1–3 distinct items, avoiding ones other open requests already want where possible. */
-function pickItems(chapter: ChapterDef, existing: Order[], seed: number): [OrderItem[], number] {
+function pickItems(ctx: OrderContext, existing: Order[], seed: number): [OrderItem[], number] {
   const taken = new Set(existing.flatMap((o) => o.items.map(key)));
-  let [countIndex, s] = pickWeighted(seed, economy.orders.itemCountWeights);
+  const [countIndex, s0] = pickWeighted(seed, ctx.itemCountWeights);
+  let s = s0;
   const items: OrderItem[] = [];
+  const newest = ctx.chainGroups[ctx.chainGroups.length - 1];
+  const older = ctx.chainGroups.slice(0, -1).flat();
   for (let attempt = 0; attempt < 20 && items.length <= countIndex; attempt++) {
-    const [chain, s2] = pick(s, chapter.chains);
+    // Mostly the newest chapter's chains, sometimes older ones.
+    const [r, s1] = rand(s);
+    const group = older.length && r >= economy.orders.newestChainShare ? older : newest;
+    const [chain, s2] = pick(s1, group);
     const [t, s3] = pickWeighted(s2, economy.orders.tierWeights.slice(0, maxTierOf(chain)));
     s = s3;
     const item = { chain, tier: t + 1 };
@@ -28,7 +42,7 @@ function pickItems(chapter: ChapterDef, existing: Order[], seed: number): [Order
 
 /** Creates one request from a character who isn't already waiting on something. */
 export function makeOrder(
-  chapter: ChapterDef,
+  ctx: OrderContext,
   existing: Order[],
   id: number,
   seed: number,
@@ -36,18 +50,18 @@ export function makeOrder(
   /** Characters to skip if possible, e.g. whoever was just served. */
   avoid: string[] = [],
 ): [Order, number] {
-  const cast = characters.filter((c) => c.chapter === chapter.id);
+  const cast = ctx.cast.map(getCharacter).filter((c): c is Character => !!c);
   const busy = new Set([...existing.map((o) => o.characterId), ...avoid]);
 
-  const [items, s1] = pickItems(chapter, existing, seed);
+  const [items, s1] = pickItems(ctx, existing, seed);
   const single = items.length === 1;
-  const linesFor_ = (role: Role) => (single ? linesFor(items[0].chain, items[0].tier, role) : linesForRole(multiLines, role));
+  const lines = (c: Character) => (single ? linesFor(items[0].chain, items[0].tier, c) : multiLinesFor(c));
 
   // Prefer someone who isn't busy and has something to say about this request.
   const free = cast.filter((c) => !busy.has(c.id));
-  const pool = [free.filter((c) => linesFor_(c.role) !== FALLBACK), free, cast].find((p) => p.length)!;
+  const pool = [free.filter((c) => lines(c) !== FALLBACK), free, cast].find((p) => p.length)!;
   const [who, s2] = pick(s1, pool);
-  const [line, s3] = pick(s2, linesFor_(who.role));
+  const [line, s3] = pick(s2, lines(who));
 
   return [
     {
@@ -64,7 +78,7 @@ export function makeOrder(
 
 /** Tops up the order list to the visible count. Returns the new orders separately for the chat. */
 export function fillOrders(
-  chapter: ChapterDef,
+  ctx: OrderContext,
   orders: Order[],
   nextId: number,
   seed: number,
@@ -76,7 +90,7 @@ export function fillOrders(
   let id = nextId;
   let s = seed;
   while (out.length < economy.orders.visible) {
-    const [order, next] = makeOrder(chapter, out, id++, s, now, avoid);
+    const [order, next] = makeOrder(ctx, out, id++, s, now, avoid);
     out.push(order);
     added.push(order);
     s = next;

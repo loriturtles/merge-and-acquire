@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-blue" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#d3e7ff"></stop><stop offset="0.5" stop-color="#3f86f2"></stop><stop offset="1" stop-color="#1f4fa8"></stop></radialGradient><radialGradient id="r-green" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#b8f6d4"></stop><stop offset="0.55" stop-color="#3fbf82"></stop><stop offset="1" stop-color="#1f7a50"></stop></radialGradient><radialGradient id="r-navy" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#8a81b8"></stop><stop offset="0.6" stop-color="#3a3358"></stop><stop offset="1" stop-color="#221b38"></stop></radialGradient><radialGradient id="r-white" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffffff"></stop><stop offset="0.45" stop-color="#f2f4f9"></stop><stop offset="1" stop-color="#c3cbdb"></stop></radialGradient><filter id="d-blur1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"></feGaussianBlur></filter><filter id="d-blur2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2"></feGaussianBlur></filter><filter id="d-blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
+<ellipse cx="60" cy="108" rx="46" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<rect x="24" y="101" width="26" height="8" rx="4" fill="#16112a"></rect>
+<rect x="24" y="98" width="26" height="8" rx="4" fill="url(#r-navy)"></rect>
+<rect x="70" y="101" width="26" height="8" rx="4" fill="#16112a"></rect>
+<rect x="70" y="98" width="26" height="8" rx="4" fill="url(#r-navy)"></rect>
+<rect x="28" y="62" width="10" height="38" rx="5" fill="url(#r-green)"></rect>
+<rect x="82" y="62" width="10" height="38" rx="5" fill="url(#r-green)"></rect>
+<rect x="26" y="80" width="14" height="22" rx="6" fill="url(#r-green)"></rect>
+<rect x="80" y="80" width="14" height="22" rx="6" fill="url(#r-green)"></rect>
+<rect x="55" y="42" width="10" height="12" rx="4" fill="url(#r-navy)"></rect>
+<rect x="32" y="14" width="56" height="36" rx="11" fill="#16112a"></rect>
+<rect x="32" y="10" width="56" height="36" rx="11" fill="url(#r-navy)"></rect>
+<rect x="38" y="16" width="44" height="24" rx="7" fill="url(#r-blue)"></rect>
+<rect x="43" y="21" width="18" height="5" rx="2.5" fill="#ffffff" opacity="0.85"></rect>
+<rect x="43" y="29" width="28" height="5" rx="2.5" fill="#ffffff" opacity="0.6"></rect>
+<rect x="84" y="36" width="13" height="15" rx="5" fill="url(#r-white)"></rect>
+<rect x="12" y="55" width="96" height="13" rx="6.5" fill="#1f7a50"></rect>
+<rect x="12" y="50" width="96" height="13" rx="6.5" fill="url(#r-green)"></rect>
+<ellipse cx="28" cy="53" rx="12" ry="2.5" fill="#ffffff" opacity="0.75" transform="rotate(-4 28 53)" filter="url(#d-blur2)"></ellipse>
+<ellipse cx="38" cy="14" rx="6" ry="2" fill="#ffffff" opacity="0.45" transform="rotate(-10 38 14)" filter="url(#d-blur1)"></ellipse>
+</svg>

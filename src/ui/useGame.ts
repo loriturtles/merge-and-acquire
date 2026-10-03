@@ -41,5 +41,14 @@ export function useGame() {
 
   useEffect(() => save(localStorage, state, saveKey), [state]);
 
+  // Dev only: `__game.set({ hours: 0 })` in the console to jump around while testing.
+  useEffect(() => {
+    if (!import.meta.env.DEV) return;
+    (window as unknown as { __game: unknown }).__game = {
+      state,
+      set: (patch: Partial<typeof state>) => dispatch({ type: 'reset', state: { ...state, ...patch } }),
+    };
+  }, [state]);
+
   return [state, dispatch] as const;
 }

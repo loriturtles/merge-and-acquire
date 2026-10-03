@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-gold" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fff4bd"></stop><stop offset="0.5" stop-color="#ffc93a"></stop><stop offset="1" stop-color="#cf8f0c"></stop></radialGradient><radialGradient id="r-green" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#b8f6d4"></stop><stop offset="0.5" stop-color="#3fbf82"></stop><stop offset="1" stop-color="#1f7a50"></stop></radialGradient><radialGradient id="r-navy" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#8a81b8"></stop><stop offset="0.6" stop-color="#3a3358"></stop><stop offset="1" stop-color="#221b38"></stop></radialGradient><radialGradient id="r-orange" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffd0a8"></stop><stop offset="0.5" stop-color="#ff8a3a"></stop><stop offset="1" stop-color="#c4561a"></stop></radialGradient><radialGradient id="r-white" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffffff"></stop><stop offset="0.45" stop-color="#f2f4f9"></stop><stop offset="1" stop-color="#c3cbdb"></stop></radialGradient><filter id="d-blur2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2"></feGaussianBlur></filter><filter id="d-blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
+<ellipse cx="60" cy="106" rx="48" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<rect x="30" y="10" width="60" height="44" rx="10" fill="url(#r-white)" transform="rotate(-4 60 32)"></rect>
+<rect x="40" y="20" width="30" height="6" rx="3" fill="#c3cbdb" transform="rotate(-4 60 32)"></rect>
+<rect x="10" y="44" width="100" height="52" rx="20" fill="#a86f05"></rect>
+<rect x="10" y="38" width="100" height="52" rx="20" fill="url(#r-gold)"></rect>
+<circle cx="94" cy="52" r="6" fill="url(#r-green)"></circle>
+<rect x="74" y="49" width="12" height="6" rx="3" fill="#cf8f0c"></rect>
+<rect x="24" y="62" width="72" height="11" rx="5.5" fill="url(#r-navy)"></rect>
+<rect x="32" y="68" width="56" height="34" rx="9" fill="#9aa3b8"></rect>
+<rect x="32" y="66" width="56" height="34" rx="9" fill="url(#r-white)"></rect>
+<rect x="39" y="76" width="18" height="12" rx="4" fill="url(#r-orange)"></rect>
+<rect x="61" y="76" width="20" height="6" rx="3" fill="#c3cbdb"></rect>
+<rect x="61" y="86" width="14" height="6" rx="3" fill="#c3cbdb"></rect>
+<ellipse cx="30" cy="44" rx="14" ry="3.5" fill="#ffffff" opacity="0.85" transform="rotate(-8 30 44)" filter="url(#d-blur2)"></ellipse>
+</svg>

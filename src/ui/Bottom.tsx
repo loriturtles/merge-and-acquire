@@ -3,7 +3,7 @@ import { economy } from '../config/economy';
 import { getChain, getTier, maxTierOf } from '../content/chains';
 import type { Action } from '../game/state';
 import type { GameEvent, GameState } from '../game/types';
-import { pieceArt, pieceName } from './art';
+import { iconArt, pieceArt, pieceName } from './art';
 import { formatMoney, withArticle } from './format';
 
 export function SelectedBar({ state, dispatch }: { state: GameState; dispatch: Dispatch<Action> }) {
@@ -12,7 +12,7 @@ export function SelectedBar({ state, dispatch }: { state: GameState; dispatch: D
   if (!piece) {
     return (
       <div className="selected card selected-empty">
-        <span>Tap the backpack or microwave to start working. Drag two matching items together to merge them.</span>
+        <span>Tap a generator to start working. Drag two matching items together to merge them.</span>
       </div>
     );
   }
@@ -36,6 +36,16 @@ export function SelectedBar({ state, dispatch }: { state: GameState; dispatch: D
         <span className="selected-name">{pieceName(piece)}</span>
         <span className="selected-detail">{detail}</span>
       </div>
+      {piece.kind === 'item' && piece.tier < maxTierOf(piece.chain) && (
+        <button
+          className="btn btn-secondary btn-upgrade"
+          disabled={state.shares < economy.shares.upgradeCost}
+          title={`Upgrade one tier for ${economy.shares.upgradeCost} shares`}
+          onClick={() => dispatch({ type: 'upgradeItem', index: state.selected!, now: Date.now() })}
+        >
+          <img src={iconArt('shares')} alt="" width={18} height={18} />+1 · {economy.shares.upgradeCost}
+        </button>
+      )}
       {piece.kind === 'item' && (
         <button className="btn btn-secondary" onClick={() => dispatch({ type: 'sell', index: state.selected!, now: Date.now() })}>
           Sell {formatMoney(economy.sellValue(piece.tier))}
@@ -60,21 +70,17 @@ const tabs = [
   { id: 'shares', label: 'Shares', icon: <path d="M4 18 L9 12 L13 15 L20 7 M15 7 H20 V12" /> },
 ];
 
-const comingSoon: Record<string, string> = {
-  office: 'Rebuilding the share house opens soon.',
-  team: 'Your team page is still in onboarding.',
-  shares: 'Shares start vesting at your first job.',
-};
+export type Tab = 'desk' | 'office' | 'team' | 'shares';
 
-export function BottomNav({ onSoon }: { onSoon: (msg: string) => void }) {
+export function BottomNav({ tab, onTab }: { tab: Tab; onTab: (tab: Tab) => void }) {
   return (
     <nav className="nav card" aria-label="Main">
       {tabs.map((t) => (
         <button
           key={t.id}
-          className={`nav-tab${t.id === 'desk' ? ' nav-active' : ''}`}
-          aria-current={t.id === 'desk' ? 'page' : undefined}
-          onClick={() => t.id !== 'desk' && onSoon(comingSoon[t.id])}
+          className={`nav-tab${t.id === tab ? ' nav-active' : ''}`}
+          aria-current={t.id === tab ? 'page' : undefined}
+          onClick={() => onTab(t.id as Tab)}
         >
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
             {t.icon}
@@ -89,13 +95,33 @@ export function BottomNav({ onSoon }: { onSoon: (msg: string) => void }) {
 function messageFor(event: GameEvent): string | null {
   switch (event.type) {
     case 'payday':
+      if (event.amount === 0) return 'Payday: $0. Founders pay themselves last.';
       return event.count > 1 ? `Payday ×${event.count}! +${formatMoney(event.amount)}` : `Payday! +${formatMoney(event.amount)}`;
+    case 'paged':
+      return 'Paged! A bug landed on your desk.';
+    case 'overtime':
+      return 'Working overtime. Careful.';
+    case 'burnout':
+      return 'Burnt out! Basic items only and half pay for a while.';
+    case 'vested':
+      return `${event.amount} share${event.amount === 1 ? '' : 's'} vested`;
+    case 'refilled':
+      return 'Long weekend taken. Hours refilled.';
+    case 'upgraded':
+      return 'Upgraded!';
+    case 'bought':
+      return 'Bought it. The place is looking better.';
     case 'deliver':
       return `Delivered! +${formatMoney(event.amount)} bonus`;
     case 'sell':
       return `Sold for ${formatMoney(event.amount)}`;
     case 'denied':
-      return event.reason === 'no-hours' ? 'Out of hours. Take a break, they refill.' : "Desk's full. Merge or sell something.";
+      return {
+        'no-hours': 'Overtime maxed out. Take a break, hours refill.',
+        'board-full': "Desk's full. Merge or sell something.",
+        'no-shares': 'Not enough vested shares.',
+        'no-salary': 'Not enough salary yet. Payday is coming.',
+      }[event.reason];
     default:
       return null;
   }

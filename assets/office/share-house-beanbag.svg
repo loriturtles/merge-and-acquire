@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-gold" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fff4bd"></stop><stop offset="0.5" stop-color="#ffc93a"></stop><stop offset="1" stop-color="#cf8f0c"></stop></radialGradient><radialGradient id="r-purple" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#e6d8ff"></stop><stop offset="0.5" stop-color="#8f63f0"></stop><stop offset="1" stop-color="#4f2fb0"></stop></radialGradient><filter id="d-blur1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"></feGaussianBlur></filter><filter id="d-blur2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2"></feGaussianBlur></filter><filter id="d-blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
+<ellipse cx="60" cy="108" rx="44" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<path d="M48 28 Q66 20 82 38 Q104 64 104 86 Q104 102 60 102 Q16 102 16 86 Q16 64 30 44 Q36 32 48 28 Z" fill="#4f2fb0" transform="translate(0 5)"></path>
+<path d="M48 28 Q66 20 82 38 Q104 64 104 86 Q104 102 60 102 Q16 102 16 86 Q16 64 30 44 Q36 32 48 28 Z" fill="url(#r-purple)"></path>
+<ellipse cx="64" cy="60" rx="24" ry="12" fill="#4f2fb0" opacity="0.6" transform="rotate(-8 64 60)" filter="url(#d-blur2)"></ellipse>
+<ellipse cx="66" cy="56" rx="18" ry="7" fill="#b89cff" opacity="0.5" transform="rotate(-8 66 56)" filter="url(#d-blur2)"></ellipse>
+<path d="M38 82 Q60 92 84 82" fill="none" stroke="#4f2fb0" stroke-width="6" stroke-linecap="round" opacity="0.35" filter="url(#d-blur1)"></path>
+<rect x="86" y="72" width="9" height="12" rx="3" fill="url(#r-gold)" transform="rotate(-12 90 78)"></rect>
+<ellipse cx="46" cy="38" rx="9" ry="5" fill="#ffffff" opacity="0.75" transform="rotate(-35 46 38)" filter="url(#d-blur2)"></ellipse>
+</svg>

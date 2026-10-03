@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="r-blue" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#d3e7ff"></stop><stop offset="0.5" stop-color="#3f86f2"></stop><stop offset="1" stop-color="#1f4fa8"></stop></radialGradient><radialGradient id="r-gold" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fff4bd"></stop><stop offset="0.5" stop-color="#ffc93a"></stop><stop offset="1" stop-color="#cf8f0c"></stop></radialGradient><radialGradient id="r-kraft" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fae2bc"></stop><stop offset="0.5" stop-color="#d9b27a"></stop><stop offset="1" stop-color="#9c7440"></stop></radialGradient><radialGradient id="r-orange" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffd0a8"></stop><stop offset="0.5" stop-color="#ff8a3a"></stop><stop offset="1" stop-color="#c4561a"></stop></radialGradient><filter id="d-blur1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"></feGaussianBlur></filter><filter id="d-blur2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2"></feGaussianBlur></filter><filter id="d-blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
+<ellipse cx="60" cy="106" rx="48" ry="6" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<rect x="6" y="42" width="34" height="15" rx="7.5" fill="url(#r-kraft)" transform="rotate(28 40 49)"></rect>
+<rect x="80" y="42" width="34" height="15" rx="7.5" fill="#c49a5e" transform="rotate(-28 80 49)"></rect>
+<rect x="22" y="40" width="76" height="18" rx="9" fill="#7a5a30"></rect>
+<path d="M47 20 L54 16 Q60 22 66 16 L73 20 L86 30 L79 39 L74 36 V56 H46 V36 L41 39 L34 30 Z" fill="url(#r-blue)" stroke="#3f86f2" stroke-width="7" stroke-linejoin="round"></path>
+<ellipse cx="60" cy="19" rx="6" ry="3.5" fill="#1f4fa8"></ellipse>
+<circle cx="60" cy="38" r="6" fill="url(#r-gold)"></circle>
+<ellipse cx="44" cy="28" rx="5" ry="2.5" fill="#ffffff" opacity="0.75" transform="rotate(-30 44 28)" filter="url(#d-blur1)"></ellipse>
+<rect x="16" y="53" width="88" height="52" rx="17" fill="#7a5a30"></rect>
+<rect x="16" y="48" width="88" height="52" rx="17" fill="url(#r-kraft)"></rect>
+<rect x="16" y="48" width="88" height="10" rx="5" fill="#c49a5e" opacity="0.55"></rect>
+<circle cx="76" cy="77" r="13" fill="#c4561a"></circle>
+<circle cx="76" cy="75" r="13" fill="url(#r-orange)"></circle>
+<path d="M76 68 L78.3 72.6 L83 73.2 L79.5 76.5 L80.4 81.2 L76 78.9 L71.6 81.2 L72.5 76.5 L69 73.2 L73.7 72.6 Z" fill="#fff4bd" stroke="#fff4bd" stroke-width="2.5" stroke-linejoin="round"></path>
+<ellipse cx="36" cy="62" rx="12" ry="3.5" fill="#ffffff" opacity="0.7" transform="rotate(-10 36 62)" filter="url(#d-blur2)"></ellipse>
+</svg>

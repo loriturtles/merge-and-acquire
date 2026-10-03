@@ -1,3 +1,4 @@
+import { economy } from '../config/economy';
 import { tick } from './state';
 import type { GameState } from './types';
 
@@ -35,9 +36,33 @@ function migrate(data: any): GameState | null {
     const chat = orders.map((o: GameState['orders'][number], i: number) => ({
       id: i + 1, from: o.characterId, text: o.text, at: o.postedAt, orderId: o.id, items: o.items,
     }));
-    return { ...data, version: 2, orders, chat, nextMessageId: chat.length + 1, chatReadAt: 0 };
+    data = { ...data, version: 2, orders, chat, nextMessageId: chat.length + 1, chatReadAt: 0 };
   }
-  return data?.version === 2 ? (data as GameState) : null;
+  if (data?.version === 2) {
+    // v2 was Uni-only: no path, XP, vesting, overtime, events or office.
+    const { chapterId: _chapterId, ...rest } = data;
+    data = {
+      ...rest,
+      version: 3,
+      stage: 'uni',
+      path: null,
+      xp: 0,
+      level: (data.titleIndex ?? 0) + 1,
+      pendingGenerators: [],
+      overtimeLog: [],
+      burntOutUntil: 0,
+      vesting: [],
+      nextPageAt: 0,
+      surveyEndsAt: 0,
+      nextSurveyAt: (data.updatedAt ?? 0) + economy.survey.firstAfterMs,
+      moodUntil: 0,
+      office: {},
+      stats: { ordersThisChapter: 0, ordersTotal: 0, deliveredTo: {} },
+      reviewed: [],
+      notices: [],
+    };
+  }
+  return data?.version === 3 ? (data as GameState) : null;
 }
 
 export function load(storage: Storage, now: number, key = SAVE_KEY): GameState | null {

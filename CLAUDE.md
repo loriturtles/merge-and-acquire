@@ -28,6 +28,22 @@ A casual merge game for iPhone, in the same family as Travel Town, Gossip Harbor
 
 Earlier chains stay available in later chapters, so the board gets richer as you progress. In Retirement, ex-colleagues still message asking for "one quick favour" (the Inbox chain comes back as a joke).
 
+### 2b. Career paths (supersedes the single storyline above from chapter 2 on)
+
+After the Uni performance review the player **chooses a path**. The path decides job titles, salaries, generators and chains, who messages you, and one **rule twist** that changes how the game plays. Chapters (life stages) stay the same; the table above is now flavour for the default storyline. A second fork (stay a specialist or go into management) comes at chapter 5 in a later milestone. Paths meet again at exec level (CTO / CPO / CRO / CEO).
+
+| Path | Ch 2 titles | Ch 3 titles | Ch 2 chain (generator) | Ch 3 adds | Twist |
+|---|---|---|---|---|---|
+| Engineer | SWE intern → Junior engineer | Software engineer → Senior engineer | Code (Laptop) | Data (Server rack) | **On call:** a pager drops Bug items onto your desk every few minutes |
+| Product | APM intern → Associate PM | Product manager → Senior PM | Strategy (Printer) | Inbox (In-tray) | **Stakeholders:** requests ask for more items at once and pay ×1.5 |
+| Sales | Sales intern → Sales development rep | Account executive → Senior AE | Swag (Merch box) | Coffee (Coffee machine) | **Commission:** payday is base salary only; deliveries pay ×3 |
+| Founder | Solo founder → Pre-seed founder | Seed-stage CEO → Series A CEO | Code (Laptop) | Funding (Piggy bank) | **Equity-rich, cash-poor:** tiny salary, generators can drop tiers 1–3, every delivery also grants a share |
+
+- **Spaces to rebuild:** ch 1 the share house, ch 2 the garage startup, ch 3 the open-plan floor (all paths).
+- **Cast:** each path has its own workplace cast of 5 (see `src/content/characters.ts`), all drawn as funny tech archetypes, never real people.
+- **Salaries** are real US figures with sources in `src/content/salaries.ts`; each payday pays one fortnightly paycheck (annual ÷ 26).
+- **Levels are job titles.** Filling the XP bar promotes you to the next title (pay rise and share grant). Passing a chapter's last title triggers its performance review and the next chapter.
+
 ## 3. Economy
 
 Keep every number in **one config file** (e.g. `src/config/economy.ts`) so it can be tuned without touching game logic. Starting values below are guesses for playtesting.
@@ -141,7 +157,7 @@ Every item looks like a squishy, glossy collectible desk toy. Use the provided S
 ## 8. Milestones
 
 1. **Core loop, Uni chapter:** board, generators, drag to merge, hours with refill, chat orders, salary payday, sell, save and load. Playable on a phone.
-2. **Career progression:** XP, job titles, promotion to chapters 2–3 with their chains and generators; shares with vesting; overtime and burnout.
+2. **Career progression:** XP, job titles, the path choice after Uni, promotion to chapters 2–3 for all four paths with their chains, generators and twists; shares with vesting; overtime and burnout.
 3. **Rebuild screens** for each chapter (Office tab), plus the engagement survey and performance review events.
 4. **Polish:** merge and spawn animations, sound, all 7 chapters, remaining events, the 9 missing generators, a debug panel for tuning the economy.
 5. **iOS:** Capacitor wrap, haptics, app icon, TestFlight build.
