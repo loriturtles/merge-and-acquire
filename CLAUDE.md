@@ -176,3 +176,14 @@ After each milestone: run the tests, then check the game in a mobile-sized brows
 - `design/reference/StyleG.dc.html` — style guide page
 - `design/reference/ChainsG.dc.html` — all chains page
 - `design/reference/Career.dc.html` — storyline and chapters page (older art style; use for content only)
+
+## 10. Working in this repo
+
+- `npm run dev`: dev server on the local network (`--host`), for testing on a phone over Wi-Fi.
+- `npm test`: unit tests for the game rules (`src/game/*.test.ts`). `npx tsc -b` and `npx oxlint` must stay clean.
+- `npm run ios:open`: builds, syncs to `ios/` and opens Xcode. Needs full Xcode installed.
+- `/dev/phones.html`: the game at three iPhone viewport sizes side by side. `?save=name` gives a separate save slot.
+- Dev console: `__game.set({ ... })` patches the live game state (dev builds only).
+- Art scripts: `node scripts/avatars.mjs` (cast avatars) and `node scripts/app-icon.mjs` (app icon, macOS only).
+- Layout: rules in `src/game/` (pure, no React), content in `src/content/`, numbers in `src/config/economy.ts`, UI in `src/ui/`.
+- Status: milestones 1–3 are done, including career paths for chapters 1–3. Next: polish (milestone 4) and chapters 4–7 per path.
