@@ -55,7 +55,7 @@ export function Board({ state, dispatch }: { state: GameState; dispatch: Dispatc
     dragRef.current = d;
     setDragState(d);
   };
-  const wanted = new Set(state.orders.map((o) => `${o.chain}-${o.tier}`));
+  const wanted = new Set(state.orders.flatMap((o) => o.items.map((i) => `${i.chain}-${i.tier}`)));
   const event = state.event;
 
   const onPointerDown = (e: PointerEvent<HTMLDivElement>) => {

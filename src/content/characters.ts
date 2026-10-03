@@ -79,7 +79,37 @@ export const requestLines: Partial<Record<`${ChainId}-${number}`, ChatLine[]>> =
   ],
 };
 
+/** Lines for requests that ask for several items. */
+export const multiLines: ChatLine[] = [
+  { role: 'flatmate', text: 'House party tonight. Shopping list attached' },
+  { role: 'flatmate', text: 'Group project survival kit, please' },
+  { role: 'flatmate', text: 'Exam week. I need all of this. Urgently.' },
+  { role: 'flatmate', text: 'Starting a startup in the lounge. Need supplies' },
+  { role: 'tutor', text: 'For the study group, please bring:' },
+  { role: 'tutor', text: 'Revision session needs the following' },
+  { role: 'tutor', text: 'Faculty meeting. Morale is low. Send these' },
+];
+
+/** Replies after you deliver. */
+export const thanksLines: ChatLine[] = [
+  { role: 'flatmate', text: 'Legend. I owe you one (I will not pay you back)' },
+  { role: 'flatmate', text: 'You are the best flatmate. Do not tell the others' },
+  { role: 'flatmate', text: 'Adding you to my résumé as "mentor"' },
+  { role: 'flatmate', text: 'Lifesaver. Payment request incoming. For you, I mean' },
+  { role: 'tutor', text: 'Adequate. See me after class.' },
+  { role: 'tutor', text: 'Excellent work. This will not be on the exam.' },
+  { role: 'tutor', text: 'Thank you. I will mention this in your reference' },
+];
+
+/** What you say when you deliver. */
+export const deliverLines = ['Here you go!', 'Sorted.', 'Done and done.', 'Fresh off the board.', 'On your desk.'];
+
 export const FALLBACK: ChatLine[] = [{ text: 'Could you sort this out for me?' }];
+
+export function linesForRole(lines: ChatLine[], role: Role): ChatLine[] {
+  const matching = lines.filter((l) => !l.role || l.role === role);
+  return matching.length ? matching : FALLBACK;
+}
 
 export function linesFor(chain: ChainId, tier: number, role: Role): ChatLine[] {
   const all = requestLines[`${chain}-${tier}`] ?? [];

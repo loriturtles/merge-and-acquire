@@ -1,12 +1,14 @@
 import { economy } from '../config/economy';
 import { getChapter } from '../content/chapters';
+import { annualSalary } from '../content/salaries';
 import type { ChainId } from '../content/chains';
-import { drop, emptyBoard, findItem, nearestEmpty, place } from './board';
+import { characters, deliverLines, linesForRole, thanksLines } from '../content/characters';
+import { drop, emptyBoard, nearestEmpty, place } from './board';
 import { refillHours, spendHours } from './hours';
-import { fillOrders } from './orders';
+import { fillOrders, matchItems } from './orders';
 import { collectPaydays } from './payday';
-import { pickWeighted } from './rng';
-import type { GameState, Piece } from './types';
+import { pick, pickWeighted } from './rng';
+import type { ChatMessage, GameState, Order, Piece } from './types';
 
 export type Action =
   | { type: 'tick'; now: number }
@@ -15,6 +17,7 @@ export type Action =
   | { type: 'deliver'; orderId: number; now: number }
   | { type: 'sell'; index: number; now: number }
   | { type: 'deselect' }
+  | { type: 'readChat'; now: number }
   | { type: 'reset'; state: GameState };
 
 export function newGame(opts: { now: number; rows: number; seed: number }): GameState {
@@ -34,7 +37,7 @@ export function newGame(opts: { now: number; rows: number; seed: number }): Game
   for (const [x, y, piece] of starting) board = place(board, at(x, y), piece);
 
   const base: GameState = {
-    version: 1,
+    version: 2,
     chapterId: chapter.id,
     titleIndex: 0,
     board,
@@ -46,16 +49,33 @@ export function newGame(opts: { now: number; rows: number; seed: number }): Game
     nextPaydayAt: opts.now + economy.payday.everyMs,
     orders: [],
     nextOrderId: 1,
+    chat: [],
+    nextMessageId: 1,
+    chatReadAt: 0,
     rngSeed: opts.seed,
     updatedAt: opts.now,
     event: null,
   };
-  return { ...base, ...fillOrders(chapter, [], 1, opts.seed, opts.now) };
+  const { added, ...filled } = fillOrders(chapter, [], 1, opts.seed, opts.now);
+  return post({ ...base, ...filled }, added.map(requestMessage));
 }
 
+type NewMessage = Omit<ChatMessage, 'id'>;
+
+const requestMessage = (o: Order): NewMessage => ({ from: o.characterId, text: o.text, at: o.postedAt, orderId: o.id, items: o.items });
+
+/** Appends messages to #team-requests, keeping the history short. */
+function post(state: GameState, messages: NewMessage[]): GameState {
+  let id = state.nextMessageId;
+  const chat = [...state.chat, ...messages.map((m) => ({ ...m, id: id++ }))].slice(-economy.orders.chatHistory);
+  return { ...state, chat, nextMessageId: id };
+}
+
+/** One paycheck at the current job title. */
 export function wage(state: GameState): number {
   const chapter = getChapter(state.chapterId);
-  return chapter.wages[Math.min(state.titleIndex, chapter.wages.length - 1)];
+  const title = chapter.titles[Math.min(state.titleIndex, chapter.titles.length - 1)];
+  return Math.round(annualSalary(title) / economy.payday.periodsPerYear);
 }
 
 /** Brings timers up to `now`: hours refill and paydays. Used every second and after time away. */
@@ -118,20 +138,33 @@ export function reducer(state: GameState, action: Action): GameState {
     case 'deliver': {
       const order = state.orders.find((o) => o.id === action.orderId);
       if (!order) return state;
-      const index = findItem(state.board, order.chain, order.tier, state.selected);
-      if (index === -1) return state;
+      const cells = matchItems(state.board, order.items, state.selected);
+      if (cells.includes(-1)) return state;
+
+      const now = action.now;
       const remaining = state.orders.filter((o) => o.id !== order.id);
-      const refilled = fillOrders(getChapter(state.chapterId), remaining, state.nextOrderId, state.rngSeed, action.now, [
+      const { added, rngSeed, ...refilled } = fillOrders(getChapter(state.chapterId), remaining, state.nextOrderId, state.rngSeed, now, [
         order.characterId,
       ]);
-      return {
+      const who = characters.find((c) => c.id === order.characterId);
+      const [mine, s1] = pick(rngSeed, deliverLines);
+      const [thanks, s2] = pick(s1, linesForRole(thanksLines, who?.role ?? 'flatmate'));
+
+      const board = cells.reduce((b, i) => place(b, i, null), state.board);
+      const delivered: GameState = {
         ...state,
         ...refilled,
-        board: place(state.board, index, null),
-        selected: state.selected === index ? null : state.selected,
+        rngSeed: s2,
+        board,
+        selected: state.selected !== null && cells.includes(state.selected) ? null : state.selected,
         salary: state.salary + order.reward,
-        event: { type: 'deliver', orderId: order.id, amount: order.reward, at: action.now },
+        event: { type: 'deliver', orderId: order.id, amount: order.reward, at: now },
       };
+      return post(delivered, [
+        { from: 'you', text: mine, at: now, items: order.items },
+        { from: order.characterId, text: thanks.text, at: now },
+        ...added.map(requestMessage),
+      ]);
     }
 
     case 'sell': {
@@ -146,6 +179,9 @@ export function reducer(state: GameState, action: Action): GameState {
         event: { type: 'sell', amount, at: action.now },
       };
     }
+
+    case 'readChat':
+      return { ...state, chatReadAt: action.now };
 
     case 'deselect':
       return state.selected === null ? state : { ...state, selected: null };

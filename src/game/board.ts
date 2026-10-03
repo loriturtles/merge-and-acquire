@@ -69,13 +69,6 @@ export function place(board: Board, index: number, cell: Cell): Board {
   return { ...board, cells };
 }
 
-/** Index of an item matching chain and tier, preferring `prefer` if it matches. -1 if none. */
-export function findItem(board: Board, chain: ChainId, tier: number, prefer?: number | null): number {
-  const matches = (c: Cell) => c?.kind === 'item' && c.chain === chain && c.tier === tier;
-  if (prefer != null && matches(board.cells[prefer])) return prefer;
-  return board.cells.findIndex(matches);
-}
-
 /** Highest tier on the board for each chain (0 if none). */
 export function bestTiers(board: Board): Map<ChainId, number> {
   const best = new Map<ChainId, number>();

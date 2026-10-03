@@ -2,9 +2,9 @@ import { describe, expect, it } from 'vitest';
 import { economy } from '../config/economy';
 import { getChapter } from '../content/chapters';
 import { FALLBACK } from '../content/characters';
-import { canMerge, drop, emptyBoard, findItem, nearestEmpty, place } from './board';
+import { canMerge, drop, emptyBoard, nearestEmpty, place } from './board';
 import { msToNextHour, refillHours, spendHours } from './hours';
-import { canFill, fillOrders } from './orders';
+import { canFill, fillOrders, matchItems } from './orders';
 import { collectPaydays } from './payday';
 import { deserialise, serialise } from './save';
 import { newGame, reducer, tick, wage } from './state';
@@ -65,13 +65,15 @@ describe('board', () => {
     expect(nearestEmpty(b, 4)).toBe(-1);
   });
 
-  it('prefers the selected cell when finding an item', () => {
+  it('matches order items to cells, preferring the selected one and using each cell once', () => {
     let b = emptyBoard(7, 7);
     b = place(b, 2, item('food', 3));
     b = place(b, 9, item('food', 3));
-    expect(findItem(b, 'food', 3, 9)).toBe(9);
-    expect(findItem(b, 'food', 3, null)).toBe(2);
-    expect(findItem(b, 'food', 4)).toBe(-1);
+    b = place(b, 11, item('study', 2));
+    expect(matchItems(b, [{ chain: 'food', tier: 3 }], 9)).toEqual([9]);
+    expect(matchItems(b, [{ chain: 'food', tier: 3 }], null)).toEqual([2]);
+    expect(matchItems(b, [{ chain: 'food', tier: 3 }, { chain: 'study', tier: 2 }])).toEqual([2, 11]);
+    expect(matchItems(b, [{ chain: 'food', tier: 4 }, { chain: 'study', tier: 2 }])).toEqual([-1, 11]);
   });
 });
 
@@ -121,12 +123,20 @@ describe('orders', () => {
     const { orders } = fillOrders(uni, [], 1, 7, T0);
     expect(orders).toHaveLength(economy.orders.visible);
     expect(new Set(orders.map((o) => o.characterId)).size).toBe(orders.length);
-    expect(new Set(orders.map((o) => `${o.chain}-${o.tier}`)).size).toBe(orders.length);
     for (const o of orders) {
-      expect(uni.chains).toContain(o.chain);
-      expect(o.reward).toBe(economy.orderBonus(o.tier));
+      expect(o.items.length).toBeGreaterThanOrEqual(1);
+      expect(o.items.length).toBeLessThanOrEqual(economy.orders.itemCountWeights.length);
+      expect(new Set(o.items.map((i) => `${i.chain}-${i.tier}`)).size).toBe(o.items.length);
+      for (const i of o.items) expect(uni.chains).toContain(i.chain);
+      expect(o.reward).toBe(o.items.reduce((sum, i) => sum + economy.orderBonus(i.tier), 0));
       expect(o.text.length).toBeGreaterThan(0);
     }
+  });
+
+  it('sometimes asks for several items', () => {
+    const counts = new Set<number>();
+    for (let seed = 0; seed < 200; seed++) for (const o of fillOrders(uni, [], 1, seed, T0).orders) counts.add(o.items.length);
+    expect([...counts].sort()).toEqual([1, 2, 3]);
   });
 
   it('always gives requests a line written for that item', () => {
@@ -143,9 +153,11 @@ describe('orders', () => {
 
   it('knows when an order can be filled', () => {
     const s = game();
-    const order = { ...s.orders[0], chain: 'food' as const, tier: 1 };
+    const order = { ...s.orders[0], items: [{ chain: 'food' as const, tier: 1 }] };
     expect(canFill(s.board, order)).toBe(true);
-    expect(canFill(s.board, { ...order, tier: 5 })).toBe(false);
+    // Needs two noodles: the starting board has two.
+    expect(canFill(s.board, { ...order, items: [{ chain: 'food', tier: 1 }, { chain: 'study', tier: 1 }] })).toBe(true);
+    expect(canFill(s.board, { ...order, items: [{ chain: 'food', tier: 1 }, { chain: 'food', tier: 5 }] })).toBe(false);
   });
 });
 
@@ -180,13 +192,18 @@ describe('reducer', () => {
     expect(r.hours).toBe(full.hours);
   });
 
-  it('delivering removes the item, pays the bonus and posts a new request', () => {
+  it('delivering removes every item, pays the bonus, chats, and posts a new request', () => {
     let s = game();
-    const order = s.orders[0];
-    s = { ...s, board: place(s.board, 48, item(order.chain as 'study', order.tier)) };
+    const order = { ...s.orders[0], items: [{ chain: 'study' as const, tier: 5 }, { chain: 'food' as const, tier: 4 }], reward: 240 };
+    s = { ...s, orders: [order, ...s.orders.slice(1)] };
+    s = { ...s, board: place(place(s.board, 48, item('study', 5)), 47, item('food', 4)) };
     const next = reducer(s, { type: 'deliver', orderId: order.id, now: T0 + 5 });
-    expect(next.salary).toBe(s.salary + order.reward);
+    expect(next.salary).toBe(s.salary + 240);
     expect(next.board.cells[48]).toBeNull();
+    expect(next.board.cells[47]).toBeNull();
+    const added = next.chat.slice(s.chat.length);
+    expect(added.map((m) => m.from)).toEqual(['you', order.characterId, next.orders[2].characterId]);
+    expect(added[2].orderId).toBe(next.orders[2].id);
     expect(next.orders).toHaveLength(economy.orders.visible);
     expect(next.orders.some((o) => o.id === order.id)).toBe(false);
     expect(next.orders.some((o) => o.characterId === order.characterId)).toBe(false);
@@ -194,7 +211,7 @@ describe('reducer', () => {
 
   it('delivering without the item does nothing', () => {
     const s = game();
-    const order = { ...s.orders[0], tier: 6 };
+    const order = { ...s.orders[0], items: [{ chain: 'study' as const, tier: 6 }] };
     const st = { ...s, orders: [order, ...s.orders.slice(1)] };
     expect(reducer(st, { type: 'deliver', orderId: order.id, now: T0 })).toBe(st);
   });
@@ -206,6 +223,17 @@ describe('reducer', () => {
     expect(sold.salary).toBe(s.salary + 16);
     const g = s.board.cells.findIndex((c) => c?.kind === 'generator');
     expect(reducer(s, { type: 'sell', index: g, now: T0 })).toBe(s);
+  });
+
+  it('starts the chat with one message per request, all unread', () => {
+    const s = game();
+    expect(s.chat.map((m) => m.orderId)).toEqual(s.orders.map((o) => o.id));
+    expect(s.chat.every((m) => m.at > s.chatReadAt)).toBe(true);
+    expect(reducer(s, { type: 'readChat', now: T0 + 1 }).chatReadAt).toBe(T0 + 1);
+  });
+
+  it('pays a real fortnightly paycheck: Fresher is $9,300 a year', () => {
+    expect(wage(game())).toBe(Math.round(9_300 / 26));
   });
 
   it('tick pays the wage on payday', () => {
@@ -224,6 +252,15 @@ describe('save', () => {
     expect(loaded.board).toEqual(s.board);
     expect(loaded.hours).toBe(economy.hours.cap);
     expect(loaded.salary).toBe(s.salary + wage(s)); // one payday at 4h
+  });
+
+  it('upgrades a v1 save with single-item orders', () => {
+    const { chat: _c, nextMessageId: _n, chatReadAt: _r, ...rest } = game();
+    const v1 = { ...rest, version: 1, orders: rest.orders.map(({ items, ...o }) => ({ ...o, chain: items[0].chain, tier: items[0].tier })) };
+    const loaded = deserialise(JSON.stringify(v1), T0)!;
+    expect(loaded.version).toBe(2);
+    expect(loaded.orders[0].items).toEqual([rest.orders[0].items[0]]);
+    expect(loaded.chat).toHaveLength(loaded.orders.length);
   });
 
   it('rejects broken or unknown saves', () => {

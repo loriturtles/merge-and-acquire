@@ -18,12 +18,26 @@ export function serialise(state: GameState): string {
 export function deserialise(raw: string | null, now: number): GameState | null {
   if (!raw) return null;
   try {
-    const data = JSON.parse(raw) as GameState;
-    if (data?.version !== 1 || !Array.isArray(data.board?.cells)) return null;
+    const data = migrate(JSON.parse(raw));
+    if (!data || !Array.isArray(data.board?.cells)) return null;
     return tick({ ...data, event: null }, now);
   } catch {
     return null;
   }
+}
+
+/** Upgrades older saves to the current shape. Returns null for anything unrecognised. */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function migrate(data: any): GameState | null {
+  if (data?.version === 1) {
+    // v1 orders had a single chain/tier and there was no chat history.
+    const orders = (data.orders ?? []).map(({ chain, tier, ...o }: { chain: string; tier: number }) => ({ ...o, items: [{ chain, tier }] }));
+    const chat = orders.map((o: GameState['orders'][number], i: number) => ({
+      id: i + 1, from: o.characterId, text: o.text, at: o.postedAt, orderId: o.id, items: o.items,
+    }));
+    return { ...data, version: 2, orders, chat, nextMessageId: chat.length + 1, chatReadAt: 0 };
+  }
+  return data?.version === 2 ? (data as GameState) : null;
 }
 
 export function load(storage: Storage, now: number, key = SAVE_KEY): GameState | null {

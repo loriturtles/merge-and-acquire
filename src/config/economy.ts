@@ -20,6 +20,8 @@ export const economy = {
 
   payday: {
     everyMs: 4 * HOUR,
+    /** Each payday pays one US fortnightly paycheck: annual salary ÷ 26. */
+    periodsPerYear: 26,
     /** Paydays that can pile up while the app is closed. */
     maxMissed: 3,
   },
@@ -30,8 +32,10 @@ export const economy = {
     bonusBase: 10,
     /** Weighting of requested tiers (index 0 = tier 1). Favours tiers that are reachable. */
     tierWeights: [0, 30, 30, 22, 12, 6],
-    /** Delay before a new request appears after one is delivered. */
-    refillDelayMs: 1200,
+    /** Chance weights for how many items a request asks for (index 0 = 1 item). */
+    itemCountWeights: [55, 35, 10],
+    /** Messages kept in the chat history. */
+    chatHistory: 60,
   },
 
   /** Selling an item pays 2^tier. */
