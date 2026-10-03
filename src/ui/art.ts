@@ -14,7 +14,8 @@ const slug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 export const itemArt = (chain: ChainId, tier: number) => url(getTier(chain, tier).file);
 export const generatorArt = (chain: ChainId) => url(`assets/generators/${slug(getChain(chain).generator)}.svg`);
-export const iconArt = (name: 'hours' | 'salary' | 'shares') => url(`assets/icons/${name}.svg`);
+export const avatarArt = (characterId: string) => url(`assets/avatars/${characterId}.svg`);
+export const iconArt =(name: 'hours' | 'salary' | 'shares') => url(`assets/icons/${name}.svg`);
 
 export function pieceArt(piece: Piece): string {
   return piece.kind === 'item' ? itemArt(piece.chain, piece.tier) : generatorArt(piece.chain);

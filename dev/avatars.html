@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Avatars</title>
+<style>
+  body { margin: 0; padding: 24px; background: #eef1f7; font: 600 13px system-ui; color: #2a2140; }
+  .row { display: flex; gap: 24px; align-items: center; margin-bottom: 20px; }
+  .small img { width: 30px; height: 30px; }
+  .large img { width: 120px; height: 120px; }
+</style></head>
+<body>
+  <!-- Dev-only: the cast avatars at full size and at chat size. -->
+  <div class="row large"></div>
+  <div class="row small"></div>
+  <script>
+    for (const id of ['mia', 'josh', 'lin', 'dev', 'brooks'])
+      for (const row of document.querySelectorAll('.row')) row.insertAdjacentHTML('beforeend', `<img src="/assets/avatars/${id}.svg" alt="${id}">`);
+  </script>
+</body>
+</html>

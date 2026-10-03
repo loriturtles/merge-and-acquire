@@ -83,7 +83,7 @@ img { -webkit-user-drag: none; -webkit-touch-callout: none; }
 .badge-green { background: linear-gradient(var(--green-hi), var(--green-lo)); }
 .msg { display: flex; align-items: center; gap: 8px; padding: 4px; border-radius: 14px; min-height: 40px; transition: background 0.25s; animation: msg-in 0.35s ease-out; }
 .msg-ready { background: var(--green-tint); }
-.avatar { width: 28px; height: 28px; border-radius: 10px; font-size: 11px; font-weight: 700; display: grid; place-items: center; flex: none; }
+.avatar { width: 32px; height: 32px; flex: none; -webkit-touch-callout: none; }
 .msg-body { display: flex; flex-direction: column; flex: 1; min-width: 0; }
 .msg-meta { font-size: 12px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .msg-meta b { font-weight: 700; }
@@ -176,6 +176,7 @@ img { -webkit-user-drag: none; -webkit-touch-callout: none; }
   .pill-value { font-size: 14px; }
   .chat { padding: 6px 8px 4px; }
   .msg { min-height: 34px; padding: 2px 4px; }
+  .avatar { width: 28px; height: 28px; }
   .msg-meta { font-size: 11px; }
   .msg-text { font-size: 12px; }
   .selected { min-height: 50px; padding: 4px 8px; }

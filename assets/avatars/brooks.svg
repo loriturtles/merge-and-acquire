@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="240" height="240"><defs><radialGradient id="tile" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#e6d8ff"/><stop offset="0.55" stop-color="#8f63f0"/><stop offset="1" stop-color="#4f2fb0"/></radialGradient><radialGradient id="skin" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffeadb"/><stop offset="0.55" stop-color="#f7c9a8"/><stop offset="1" stop-color="#d0946c"/></radialGradient><radialGradient id="hair" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#d5dae5"/><stop offset="1" stop-color="#9aa3b8"/></radialGradient><radialGradient id="shirt" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#fae2bc"/><stop offset="0.5" stop-color="#d9b27a"/><stop offset="1" stop-color="#9c7440"/></radialGradient><radialGradient id="ink" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#8a81b8"/><stop offset="0.6" stop-color="#3a3358"/><stop offset="1" stop-color="#221b38"/></radialGradient><clipPath id="clip"><rect x="6" y="4" width="108" height="108" rx="32"/></clipPath><filter id="d-blur1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"/></filter><filter id="d-blur2" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2"/></filter></defs>
+<rect x="6" y="9" width="108" height="108" rx="32" fill="#4f2fb0"/>
+<rect x="6" y="4" width="108" height="108" rx="32" fill="url(#tile)"/>
+<g clip-path="url(#clip)">
+
+<rect x="49" y="72" width="22" height="24" rx="11" fill="#d0946c"/>
+<ellipse cx="60" cy="122" rx="44" ry="32" fill="url(#shirt)"/>
+<ellipse cx="44" cy="100" rx="10" ry="4" fill="#ffffff" opacity="0.6" transform="rotate(-20 44 100)" filter="url(#d-blur1)"/>
+<circle cx="32" cy="60" r="8" fill="#f7c9a8"/>
+<circle cx="88" cy="60" r="8" fill="#f7c9a8"/>
+<ellipse cx="60" cy="57" rx="27" ry="29" fill="url(#skin)"/>
+<rect x="28" y="40" width="14" height="26" rx="7" fill="url(#hair)"/><rect x="78" y="40" width="14" height="26" rx="7" fill="url(#hair)"/><path d="M34 46 Q34 24 60 24 Q84 24 86 44 Q72 34 54 36 Q42 38 34 46 Z" fill="url(#hair)"/>
+<ellipse cx="49" cy="60" rx="4" ry="5" fill="#2a2140"/>
+<ellipse cx="71" cy="60" rx="4" ry="5" fill="#2a2140"/>
+<ellipse cx="42" cy="70" rx="5" ry="3" fill="#ff8cb8" opacity="0.45"/>
+<ellipse cx="78" cy="70" rx="5" ry="3" fill="#ff8cb8" opacity="0.45"/>
+<path d="M51 71 Q60 82 69 71 Q60 75 51 71 Z" fill="#2a2140"/>
+<g fill="#ffffff" fill-opacity="0.2" stroke="#4f2fb0" stroke-width="4.5"><circle cx="48" cy="60" r="10.5"/><circle cx="72" cy="60" r="10.5"/></g><rect x="56" y="57" width="8" height="5" rx="2.5" fill="#4f2fb0"/>
+<ellipse cx="47" cy="44" rx="8" ry="4" fill="#ffffff" opacity="0.55" transform="rotate(-25 47 44)" filter="url(#d-blur1)"/>
+</g>
+<ellipse cx="30" cy="20" rx="14" ry="5" fill="#ffffff" opacity="0.7" transform="rotate(-25 30 20)" filter="url(#d-blur2)"/>
+</svg>
