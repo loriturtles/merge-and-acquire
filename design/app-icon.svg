@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+<defs>
+<radialGradient id="icon-bg" cx="35%" cy="28%" r="85%"><stop offset="0" stop-color="#e6d8ff"/><stop offset="0.45" stop-color="#8f63f0"/><stop offset="1" stop-color="#4f2fb0"/></radialGradient>
+<radialGradient id="icon-glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff4bd" stop-opacity="0.9"/><stop offset="1" stop-color="#fff4bd" stop-opacity="0"/></radialGradient>
+<filter id="icon-blur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<rect width="1024" height="1024" fill="url(#icon-bg)"/>
+<circle cx="520" cy="520" r="360" fill="url(#icon-glow)"/>
+<ellipse cx="300" cy="170" rx="230" ry="70" fill="#fff" opacity="0.35" transform="rotate(-20 300 170)" filter="url(#icon-blur)"/>
+<circle cx="230" cy="760" r="34" fill="#fff4bd"/><circle cx="820" cy="300" r="24" fill="#fff4bd"/><circle cx="790" cy="800" r="18" fill="#ffdcea"/>
+<svg x="132" y="112" width="760" height="760" viewBox="0 0 120 120"><defs><radialGradient id="r-glass" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#e4f2ff"></stop><stop offset="0.6" stop-color="#3f86f2"></stop><stop offset="1" stop-color="#1f4fa8"></stop></radialGradient><radialGradient id="r-navy" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#8a81b8"></stop><stop offset="0.6" stop-color="#3a3358"></stop><stop offset="1" stop-color="#221b38"></stop></radialGradient><radialGradient id="r-orange" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffd0a8"></stop><stop offset="0.5" stop-color="#ff8a3a"></stop><stop offset="1" stop-color="#c4561a"></stop></radialGradient><radialGradient id="r-red" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffb3a6"></stop><stop offset="0.5" stop-color="#f04f3c"></stop><stop offset="1" stop-color="#a32a1e"></stop></radialGradient><radialGradient id="r-white" cx="35%" cy="28%" r="80%"><stop offset="0" stop-color="#ffffff"></stop><stop offset="0.45" stop-color="#f2f4f9"></stop><stop offset="1" stop-color="#c3cbdb"></stop></radialGradient><filter id="d-blur1" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.2"></feGaussianBlur></filter><filter id="d-blur3" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="3"></feGaussianBlur></filter></defs>
+<ellipse cx="60" cy="112" rx="26" ry="5" fill="#2a2140" opacity="0.22" filter="url(#d-blur3)"></ellipse>
+<g transform="rotate(14 60 60)">
+<path d="M48 88 Q60 122 72 88 Q60 96 48 88 Z" fill="url(#r-orange)"></path>
+<path d="M53 90 Q60 108 67 90 Z" fill="#ffe27a"></path>
+<path d="M42 62 Q16 70 20 98 Q34 96 46 86 Z" fill="url(#r-red)"></path>
+<path d="M78 62 Q104 70 100 98 Q86 96 74 86 Z" fill="#b83224"></path>
+<path d="M60 8 C88 20 92 62 80 88 Q60 98 40 88 C28 62 32 20 60 8 Z" fill="url(#r-white)"></path>
+<path d="M60 8 C73 13 81 23 84 34 Q60 44 36 34 C39 23 47 13 60 8 Z" fill="url(#r-red)"></path>
+<circle cx="60" cy="56" r="14" fill="url(#r-navy)"></circle>
+<circle cx="60" cy="56" r="9" fill="url(#r-glass)"></circle>
+<ellipse cx="57" cy="52" rx="3.5" ry="2" fill="#ffffff" opacity="0.9"></ellipse>
+<rect x="42" y="40" width="7" height="40" rx="3.5" fill="#ffffff" opacity="0.85" filter="url(#d-blur1)"></rect>
+</g>
+</svg>
+</svg>

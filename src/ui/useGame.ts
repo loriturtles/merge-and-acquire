@@ -1,7 +1,8 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useRef } from 'react';
 import { economy } from '../config/economy';
-import { load, save, SAVE_KEY } from '../game/save';
+import { deserialise, load, save, SAVE_KEY, serialise } from '../game/save';
 import { newGame, reducer } from '../game/state';
+import { backupSave, hapticFor, isNative, restoreSave } from '../native';
 
 /** 8 rows only when the screen is tall enough that cells stay close to their width-limited size. */
 function rowsForScreen(): number {
@@ -40,6 +41,36 @@ export function useGame() {
   }, []);
 
   useEffect(() => save(localStorage, state, saveKey), [state]);
+
+  // Haptics for merges, deliveries and the like (iOS app only).
+  useEffect(() => {
+    if (state.event) hapticFor(state.event);
+  }, [state.event]);
+
+  // iOS app: keep a durable copy of the save, and restore it if the web view's storage was cleared.
+  const latest = useRef(state);
+  useEffect(() => {
+    latest.current = state;
+  }, [state]);
+  useEffect(() => {
+    if (!isNative) return;
+    void restoreSave(saveKey).then((raw) => {
+      const backup = deserialise(raw, Date.now());
+      const current = latest.current;
+      // Only restore when the backup is further along, i.e. local storage was wiped.
+      if (backup && (backup.level > current.level || backup.stats.ordersTotal > current.stats.ordersTotal)) {
+        dispatch({ type: 'reset', state: backup });
+      }
+    });
+    const backup = () => void backupSave(saveKey, serialise(latest.current));
+    const id = setInterval(backup, 15_000);
+    const onHide = () => document.visibilityState === 'hidden' && backup();
+    document.addEventListener('visibilitychange', onHide);
+    return () => {
+      clearInterval(id);
+      document.removeEventListener('visibilitychange', onHide);
+    };
+  }, []);
 
   // Dev only: `__game.set({ hours: 0 })` in the console to jump around while testing.
   useEffect(() => {
